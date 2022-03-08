@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "HarmonyOS Sans SC";
+    src: url("HarmonyOS_Sans_SC_Bold.eot"); /* IE9 */
+    src: url("HarmonyOS_Sans_SC_Bold.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("HarmonyOS_Sans_SC_Bold.woff2") format("woff2"), /* chrome 36+, firefox 39+,iOS 10+, Android 67+ */
+    url("HarmonyOS_Sans_SC_Bold.woff") format("woff"), /* chrome, firefox */
+    url("HarmonyOS_Sans_SC_Bold.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("HarmonyOS_Sans_SC_Bold.svg#HarmonyOS Sans SC") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+
