@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>ubuntu20.04.3使用docker安装mysql8</title>
+      <link href="/ubuntu20.04.3-docker-mysql8/"/>
+      <url>/ubuntu20.04.3-docker-mysql8/</url>
+      
+        <content type="html"><![CDATA[<h2 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure><h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /home/docker/mysql/&#123;conf,data&#125;</span><br></pre></td></tr></table></figure><h2 id="临时容器"><a href="#临时容器" class="headerlink" title="临时容器"></a>临时容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:latest</span><br></pre></td></tr></table></figure><h2 id="复制配置文件"><a href="#复制配置文件" class="headerlink" title="复制配置文件"></a>复制配置文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp mysql:/etc/mysql/my.cnf /home/docker/mysql/conf/my.cnf</span><br></pre></td></tr></table></figure><h2 id="删除临时容器"><a href="#删除临时容器" class="headerlink" title="删除临时容器"></a>删除临时容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f mysql</span><br></pre></td></tr></table></figure><h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /home/docker/mysql/conf/my.cnf</span><br></pre></td></tr></table></figure><p>将以下内容复制到my.cnf</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">default-authentication-plugin=mysql_native_password</span><br></pre></td></tr></table></figure><h2 id="运行容器"><a href="#运行容器" class="headerlink" title="运行容器"></a>运行容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mysql -p 3306:3306 \</span><br><span class="line">  -v /home/docker/conf:/etc/mysql/conf.d \</span><br><span class="line">  -v /home/docker/data:/var/lib/mysql \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=root \</span><br><span class="line">  --restart=always -d mysql:latest</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker容器 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> ubuntu </tag>
+            
+            <tag> mysql </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>postgresql数据库备份</title>
+      <link href="/postgresql-backup/"/>
+      <url>/postgresql-backup/</url>
+      
+        <content type="html"><![CDATA[<p>注：命令需在服务器运行</p><p>备份</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--backup_name: /soft/database_name.bak</span></span><br><span class="line">pg_dump <span class="operator">-</span>h localhost <span class="operator">-</span>p <span class="number">5432</span> <span class="operator">-</span>U postgres <span class="operator">-</span>d database_name <span class="operator">&gt;</span> backup_name</span><br></pre></td></tr></table></figure><p>还原</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--backup_name: /soft/database_name.bak</span></span><br><span class="line">psql <span class="operator">-</span>h localhost <span class="operator">-</span>U postgres <span class="operator">-</span>d database_name <span class="operator">&lt;</span> backup_name</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> SQL语言 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> postgresql </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>postgresql修改序列</title>
+      <link href="/postgresql-sequence/"/>
+      <url>/postgresql-sequence/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>公司的项目在生产环境出现了无法insert数据的情况，报错体现为主键字段为空无法插入。<br>经过本人的不懈努力，最终确定原因在于某一张表的主键丢失了序列。<br>具体为啥会没有序列已经不可追查，重要的是要先解决报错问题。</p><h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询所有自增序列</span></span><br><span class="line"><span class="keyword">SELECT</span> &quot;c&quot;.&quot;relname&quot; <span class="keyword">FROM</span> &quot;pg_class&quot; &quot;c&quot; <span class="keyword">WHERE</span> &quot;c&quot;.&quot;relkind&quot; <span class="operator">=</span> <span class="string">&#x27;S&#x27;</span>;</span><br></pre></td></tr></table></figure><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--获取是具体表的哪一列在使用哪一个序列</span></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">ts.nspname <span class="keyword">as</span> object_schema,</span><br><span class="line">tbl.relname <span class="keyword">as</span> table_name,</span><br><span class="line">col.attname <span class="keyword">as</span> column_name,</span><br><span class="line">s.relname <span class="keyword">as</span> sequence_name</span><br><span class="line"><span class="keyword">from</span> pg_class s</span><br><span class="line"><span class="keyword">join</span> pg_namespace sn <span class="keyword">on</span> sn.oid <span class="operator">=</span> s.relnamespace</span><br><span class="line"><span class="keyword">join</span> pg_depend d <span class="keyword">on</span> d.refobjid <span class="operator">=</span> s.oid <span class="keyword">and</span> d.refclassid <span class="operator">=</span> <span class="string">&#x27;pg_class&#x27;</span>::regclass</span><br><span class="line"><span class="keyword">join</span> pg_attrdef ad <span class="keyword">on</span> ad.oid <span class="operator">=</span> d.objid <span class="keyword">and</span> d.classid <span class="operator">=</span> <span class="string">&#x27;pg_attrdef&#x27;</span>::regclass</span><br><span class="line"><span class="keyword">join</span> pg_attribute col <span class="keyword">on</span> col.attrelid <span class="operator">=</span> ad.adrelid <span class="keyword">and</span> col.attnum <span class="operator">=</span> ad.adnum</span><br><span class="line"><span class="keyword">join</span> pg_class tbl <span class="keyword">on</span> tbl.oid <span class="operator">=</span> ad.adrelid</span><br><span class="line"><span class="keyword">join</span> pg_namespace ts <span class="keyword">on</span> ts.oid <span class="operator">=</span> tbl.relnamespace</span><br><span class="line"><span class="keyword">where</span> s.relkind <span class="operator">=</span> <span class="string">&#x27;S&#x27;</span> <span class="keyword">and</span> d.deptype <span class="keyword">in</span> (<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;n&#x27;</span>);</span><br></pre></td></tr></table></figure><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询最新序列值</span></span><br><span class="line"><span class="keyword">SELECT</span> last_value <span class="keyword">FROM</span> sequence_name;</span><br></pre></td></tr></table></figure><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询表字段最大值</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">MAX</span>(gid) <span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></table></figure><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--关联主键和序列</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name <span class="keyword">alter</span> <span class="keyword">column</span> column_name <span class="keyword">set</span> <span class="keyword">default</span> nextval(<span class="string">&#x27;sequence_name&#x27;</span>);</span><br></pre></td></tr></table></figure><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--设置最新序列值</span></span><br><span class="line"><span class="keyword">SELECT</span> setval(<span class="string">&#x27;sequence_name&#x27;</span>, sequence_num);</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> SQL语言 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> postgresql </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>postgresql替换字段内容</title>
+      <link href="/postgresql-replace/"/>
+      <url>/postgresql-replace/</url>
+      
+        <content type="html"><![CDATA[<p>前两天在工作中遇到一个需求：</p><p>数据库中用一个字段保存了前端页面多选框的值，每个选项之间用英文逗号（,）分割</p><p>现在需要跟第三方对接，整理一批数据发送给第三方</p><p>但是第三方的数据库多选框存值与我们的不一致</p><p>例：我们多选框存值是<code>0,1,2,3,99</code>，第三方存值是<code>1,2,3,4,5</code></p><p>彼此的映射是不同的</p><p>所以就需要我们在提供数据的将我们的映射关系转换成第三方需要的</p><p>一开始我的解决思路是先将多选框的值按照英文逗号（,）拆分出来，然后挨个按照新的映射转换</p><p>研究了许久，直到最后我看到了下边这两条<code>sql</code>语句</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--中间转换</span></span><br><span class="line"><span class="keyword">UPDATE</span> test <span class="keyword">set</span> <span class="keyword">column</span> <span class="operator">=</span> replace(replace(replace(replace(replace(<span class="keyword">column</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;一&#x27;</span>),<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;二&#x27;</span>),<span class="string">&#x27;3&#x27;</span>,<span class="string">&#x27;三&#x27;</span>),<span class="string">&#x27;4&#x27;</span>,<span class="string">&#x27;四&#x27;</span>),<span class="string">&#x27;5&#x27;</span>,<span class="string">&#x27;五&#x27;</span>);</span><br><span class="line"><span class="keyword">UPDATE</span> test <span class="keyword">set</span> <span class="keyword">column</span> <span class="operator">=</span> replace(replace(replace(replace(replace(<span class="keyword">column</span>,<span class="string">&#x27;一&#x27;</span>,<span class="string">&#x27;0&#x27;</span>),<span class="string">&#x27;二&#x27;</span>,<span class="string">&#x27;1&#x27;</span>),<span class="string">&#x27;三&#x27;</span>,<span class="string">&#x27;2&#x27;</span>),<span class="string">&#x27;四&#x27;</span>,<span class="string">&#x27;3&#x27;</span>),<span class="string">&#x27;五&#x27;</span>,<span class="string">&#x27;999&#x27;</span>);</span><br></pre></td></tr></table></figure><p>看完我不禁感慨道：我是真的菜啊！！！</p><p>单纯的记录一下菜，就酱</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> SQL语言 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> postgresql </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ubuntu20.04.3安装docker</title>
+      <link href="/ubuntu20.04.3-docker/"/>
+      <url>/ubuntu20.04.3-docker/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://docs.docker.com/engine/install/ubuntu/">Docker官方安装文档</a></p><h2 id="卸载旧版本"><a href="#卸载旧版本" class="headerlink" title="卸载旧版本"></a>卸载旧版本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove docker docker-engine docker.io containerd runc</span><br></pre></td></tr></table></figure><h2 id="更新数据源"><a href="#更新数据源" class="headerlink" title="更新数据源"></a>更新数据源</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure><h2 id="安装必备依赖"><a href="#安装必备依赖" class="headerlink" title="安装必备依赖"></a>安装必备依赖</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y ca-certificates curl gnupg lsb-release</span><br></pre></td></tr></table></figure><h2 id="安装GPG证书"><a href="#安装GPG证书" class="headerlink" title="安装GPG证书"></a>安装GPG证书</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg</span><br></pre></td></tr></table></figure><h2 id="添加稳定数据源"><a href="#添加稳定数据源" class="headerlink" title="添加稳定数据源"></a>添加稳定数据源</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo \</span><br><span class="line">  &quot;deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://mirrors.aliyun.com/docker-ce/linux/ubuntu \</span><br><span class="line"><span class="meta">  $</span><span class="language-bash">(lsb_release -cs) stable<span class="string">&quot; | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null</span></span></span><br></pre></td></tr></table></figure><h2 id="更新数据源-1"><a href="#更新数据源-1" class="headerlink" title="更新数据源"></a>更新数据源</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure><h2 id="安装最新版本"><a href="#安装最新版本" class="headerlink" title="安装最新版本"></a>安装最新版本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure><h2 id="验证安装"><a href="#验证安装" class="headerlink" title="验证安装"></a>验证安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker --version</span><br></pre></td></tr></table></figure><h2 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker info</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker容器 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> ubuntu </tag>
+            
+            <tag> apt-get </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux安装docker-compose</title>
+      <link href="/linux-docker-compose/"/>
+      <url>/linux-docker-compose/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul><li><code>docker-compose</code>从<code>2.0.0版本</code>开始，安装方式与旧版本不同。</li><li>本文分两部分记录两个版本的安装，如无特别说明，文章中<code>2.0.0版本</code>以下称为<code>V1</code>，<code>2.0.0版本</code>及以上称为<code>V2</code>。</li><li>安装<code>docker-compose</code>之前必须已经成功安装<code>docker</code>。</li><li>centos系统可查看此文章安装<code>docker</code>：<a href="https://codesensi.cn/docker/centos7.6-docker/">centos7.6安装docker</a></li><li>ubuntu系统可查看此文章安装<code>docker</code>：<a href="https://codesensi.cn/docker/ubuntu20.04.3-docker/">ubuntu20.04.3安装docker</a></li></ul><p>图不重要~</p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/2021-11-03-19-59-48.png" alt="2021-11-03-19-59-48"></p><h1 id="V1版本安装"><a href="#V1版本安装" class="headerlink" title="V1版本安装"></a>V1版本安装</h1><p><a href="https://docs.docker.com/compose/install/">Docker Compose官方安装文档（旧版本）</a></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载<code>docker-compose</code>至<code>/usr/local/bin/</code>路径下</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L &quot;https://get.daocloud.io/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure><p>截至文章发布日，<code>1.29.2版本</code>为<code>V1</code>最新版本，如需安装更低版本，查看版本号更改即可：<a href="https://github.com/docker/compose/releases">Docker Compose版本发布</a></p><h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><p>将可执行权限应用于二进制文件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure><h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>验证是否安装成功</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure><p>显示<code>docker-compose version 1.29.2, build 1110ad01</code>字样即表示已安装成功。</p><h1 id="V2版本安装"><a href="#V2版本安装" class="headerlink" title="V2版本安装"></a>V2版本安装</h1><p><a href="https://docs.docker.com/compose/cli-command/">Docker Compose官方安装文档（新版本）</a></p><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><p>依次执行以下命令下载<code>docker-compose</code>至当前用户目录的<code>/.docker/cli-plugins/</code>路径下</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/.docker/cli-plugins/</span><br><span class="line"></span><br><span class="line">curl -SL https://get.daocloud.io/docker/compose/releases/download/v2.1.0/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose</span><br></pre></td></tr></table></figure><p>截至文章发布日，<code>v2.1.0版本</code>为<code>V2</code>最新版本，如需安装其他版本，查看版本号更改即可：<a href="https://github.com/docker/compose/releases">Docker Compose版本发布</a></p><h2 id="授权-1"><a href="#授权-1" class="headerlink" title="授权"></a>授权</h2><p>将可执行权限应用于二进制文件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ~/.docker/cli-plugins/docker-compose</span><br></pre></td></tr></table></figure><p><span style="color: red">以上<code>安装</code>和<code>授权</code>步骤仅为当前用户安装<code>docker-compose</code>，全局安装请将上述命令中的<code>~/.docker/cli-plugins</code>全部替换为<code>/usr/local/lib/docker/cli-plugins</code>，然后依次执行所有命令。</span></p><h2 id="验证-1"><a href="#验证-1" class="headerlink" title="验证"></a>验证</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker compose version</span><br></pre></td></tr></table></figure><p>显示<code> Docker Compose version 2.1.0</code>字样即表示已安装成功。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker容器 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> docker-compose </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>git学习笔记②-实际应用</title>
+      <link href="/git-learn-apply/"/>
+      <url>/git-learn-apply/</url>
+      
+        <content type="html"><![CDATA[<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>在工作中碰到如下场景：</p><p>当前正在<code>dev</code>分支上开发到中途，突然需要紧急修复一个<code>bug</code>，并且这个<code>bug</code>需要修复完成之后推送到<code>dev</code>远程仓库，同时推送<code>bug</code>时，不能将开发至中途的<code>dev</code>分支上的内容推送上去。</p><h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><ol><li>将<code>dev</code>分支上的修改内容使用<code>git stash</code>命令储存起来，然后从<code>dev</code>分支创建<code>bug</code>分支。</li><li><code>bug</code>修复完成之后，将代码提交至<code>bug</code>分支。</li><li>然后使用<code>git switch</code>命令切换到<code>dev</code>分支，并将<code>bug</code>分支的代码合并。</li><li>最后使用<code>git stash pop</code>命令将之前储存在<code>dev</code>分支上的临时内容还原到已经修复完<code>bug</code>的<code>dev</code>分支上。</li></ol><p><code>注：有以下几点需要注意</code></p><ul><li>此场景应用均在<code>idea</code>编辑器上使用可视化工具实际操作</li><li>修复<code>bug</code>时对储存的临时文件做出修改，则最后还原代码时需解决代码冲突</li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><code>git</code>使用命令操作过于繁琐，建议使用可视化工具。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>git学习笔记①-常用命令</title>
+      <link href="/git-learn-commands/"/>
+      <url>/git-learn-commands/</url>
+      
+        <content type="html"><![CDATA[<h2 id="写在开头"><a href="#写在开头" class="headerlink" title="写在开头"></a>写在开头</h2><p>我太菜了，不会用 <code>git</code>……<br>阿西吧<br>学！必须学会！！！</p><p>感谢<strong>凉茶</strong>大佬的参考资料：<a href="https://zq99299.github.io/note-book/git-scm">Git系统学习笔记</a></p><p><strong>先记住这一句话：<code>git</code>的原理是 直接记录快照，而非差异比较</strong></p><ul><li><code>git</code> 像是把数据看作是对小型文件系统的一组快照。</li><li>每次你提交更新，或在 <code>git</code> 中保存项目状态时，它主要对当时的全部文件制作一个快照并保存这个快照的索引。</li><li>为了高效，如果文件没有修改，<code>git</code> 不再重新存储该文件，而是只保留一个链接指向之前存储的文件。 </li><li><code>git</code> 对待数据更像是一个 快照流。</li></ul><h2 id="边学边记"><a href="#边学边记" class="headerlink" title="边学边记"></a>边学边记</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>首先在<code>GitHub</code>创建新仓库<code>learn-git</code></p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/2021-10-30-12-44-18.png" alt="2021-10-30-12-44-18"></p><p>然后使用<code>gitbash</code>克隆仓库到本地磁盘</p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/2021-10-30-12-46-12.png" alt="2021-10-30-12-46-12"></p><p>最后进入<code>learn-git</code>目录</p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/2021-10-30-13-40-16.png" alt="2021-10-30-13-40-16"></p><h3 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h3><p>当安装完 <code>git</code> 应该做的第一件事就是设置你的用户名称与邮件地址。 这样做很重要，因为每一个 <code>git</code> 的提交都会使用这些信息，并且它会写入到你的每一次提交中，不可更改。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;codesensi&quot;</span><br><span class="line">git config --global user.email &quot;codesensi@aliyun.com&quot;</span><br></pre></td></tr></table></figure><p>如果想要检查你的配置，可以使用 <code>git config –list</code> 命令来列出所有 <code>git</code> 当时能找到的配置。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config –-list</span><br></pre></td></tr></table></figure><p>不重要提示：我直接复制这个命令到<code>gitbash</code>中使用的话，会提示<code>error: key does not contain a section: –-list</code>，但是手动输入的没有问题，原因未知。我大胆猜测可能是编码问题吧，不深究了。</p><p><strong>重要提示：编辑框不够一次性完整显示全部配置时，按<code>回车</code>可查看剩余配置项，最后按 <code>Q</code> 重返命令行</strong></p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/2021-10-30-12-54-17.png" alt="2021-10-30-12-54-17"></p><p>如果看到了重复的变量名，这是因为会从不同的配置文件获取，只有最后找到的配置会生效。</p><p>还可以通过 <code>git config &lt;key&gt;</code> 来检查 Git 的某一项配置</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config user.name</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/2021-10-30-12-56-34.png" alt="2021-10-30-12-56-34"></p><h3 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h3><p>要查看哪些文件处于什么状态，可以用 <code>git status</code> 命令。</p><p>使用 <code>git status -s</code> 命令或 <code>git status –short</code> 命令，将得到一种更为紧凑的格式输出。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status -s</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/2021-10-30-13-21-02.png" alt="2021-10-30-13-21-02"></p><ul><li>**??**：新添加的未跟踪文件</li><li><strong>A</strong>：新添加到暂存区中的文件</li><li><strong>MM</strong>：<ul><li>出现在 <strong>左</strong> 边的 <strong>M</strong>：表示修改过的文件，并放入了暂存区</li><li>出现在 <strong>右</strong> 边的 <strong>M</strong>：表示该文件被修改过，但是还没放入暂存区</li></ul></li></ul><p><strong>TIPS：一个文件的状态有两个 M，表示此文件第一次修改过后执行了<code>git add</code>放入了暂存区，但未执行<code>git commit</code>进行提交，此时进行了第二次修改，但未执行<code>git add</code>，即未放入暂存区。</strong></p><h3 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h3><p><code>git add &#123;path&#125;</code> 是一个多功能命令</p><p>理解为：<strong>添加内容到下一次提交中</strong>，而不是 将一个文件添加到项目中</p><p>包含如下功能（只列出部分）：</p><ul><li>开始跟踪新文件</li><li>把已跟踪的文件放到暂存区</li><li>合并时把有冲突的文件标记为已解决状态</li></ul><p><code>add &#123;path&#125;</code>中的 <code>path</code> 可以是：</p><ul><li>文件名：默认为当前项目仓库的根路径的 文件，比如 <code>xx.md</code></li><li>路径名：根路径为当前项目仓库的根，比如 <code>xx/xx.md</code></li><li>目录：将递归将该目录下的所有文件都添加</li></ul><h3 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h3><p><code>git commit</code> 会将暂存区的文件提交</p><p>提交时记录的是放在暂存区域的快照。</p><p>任何还未暂存的仍然保持已修改状态，可以在下次提交时纳入版本管理。</p><p>每一次运行提交操作，都是对你项目作一次快照，以后可以回到这个状态，或者进行比较。</p><ul><li>不加任何参数的命令，会触发编辑器弹出，需要输入提交信息后，保存该文件，才会提交</li><li><strong>-m</strong>：以命令行方式，直接携带提交信息提交</li><li><strong>-a</strong>：跳过 <code>git add</code> 命令，自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过 <code>git add</code> 步骤</li><li><strong>–amend</strong>：修正提交</li></ul><p><code>git commit --amend</code> 详解：</p><p>这个命令会将 <strong>暂存区中的文件提交</strong>。</p><p>如果 <strong>自上次提交以来你还未做任何修改</strong>（例如，在上次提交后马上执行了此命令），那么快照会保持不变，而你所修改的只是<strong>提交信息</strong>。</p><p>文本编辑器启动后，可以看到之前的提交信息。 编辑后保存会覆盖原来的提交信息。</p><p>例如，你 提交后 发现忘记了暂存某些需要的修改，可以像下面这样操作：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># </span><span class="language-bash">先提交了</span></span><br><span class="line"><span class="meta">$ </span><span class="language-bash">git commit -m <span class="string">&#x27;initial commit&#x27;</span></span>   </span><br><span class="line"><span class="meta"># </span><span class="language-bash">然后发现少提交了一个文件，这里 add 后</span></span><br><span class="line"><span class="meta">$ </span><span class="language-bash">git add forgotten_file</span></span><br><span class="line"><span class="meta"># </span><span class="language-bash">再进行修正，会弹出之前的提交信息，供你进行修改</span></span><br><span class="line"><span class="meta"># </span><span class="language-bash">提交之后，效果就是修正了前面一个的提交，而不是多了一个新的提交</span></span><br><span class="line"><span class="meta">$ </span><span class="language-bash">git commit --amend</span></span><br></pre></td></tr></table></figure><p>最终你只会有一个提交，即第二次提交将代替第一次提交的结果。</p><h3 id="git-reset-HEAD"><a href="#git-reset-HEAD" class="headerlink" title="git reset HEAD"></a>git reset HEAD</h3><p>例如，你已经修改了 <strong>两个文件</strong> 并且想要将它们作为 <strong>两次独立的修改提交</strong>，但是却意外地输入了 <code>git add</code> 暂存了它们两个。</p><p>使用此命令可以取消文件（两者其一或者全部）的暂存状态，使其回到<strong>修改未暂存的状态</strong>。</p><h3 id="git-rm"><a href="#git-rm" class="headerlink" title="git rm"></a>git rm</h3><ul><li>直接删除</li></ul><p>要从 <code>git</code> 中移除某个文件，就必须要从 <strong>已跟踪文件清单中移除</strong>（确切地说，是从 <strong>暂存区域移除</strong>），然后提交。</p><p>可以用 <code>git rm</code> 命令完成此项工作，并连带从工作目录中删除指定的文件，这样以后就不会出现在未跟踪文件清单中了。</p><ul><li>手动删除</li></ul><p>如果只是简单地 <strong>从工作目录中手工删除文件</strong>，实际上并没有从 <code>git</code>的暂存区将文件删除，或者说是<code>git</code>并没有记录文件被删除的操作。</p><p>此时仍需要执行一遍 <code>git rm</code> 将删除文件的操作记录到 <code>git</code> 中</p><ul><li>强制删除</li></ul><p>如果文件的状态是 <strong>删除之前修改过并且已经放到暂存区</strong>，则 <strong>必须要用强制删除选项 -f</strong>（即 force 的首字母）。</p><p>这是一种安全特性，用于防止误删还没有添加到快照的数据，这样的数据 <strong>不能被 git 恢复</strong>。</p><ul><li>移除跟踪</li></ul><p>把文件从 <code>git</code> 仓库中删除（亦即从暂存区域移除），但仍然希望保留在当前工作目录中。</p><p>换句话说，你想让文件保留在磁盘，但是并不想让 <code>git</code> 继续跟踪。</p><p>这时使用 <code>--cached</code> 可达到这一目的。</p><p>常用命令笔记会持续更新，学到哪里记录到哪里。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vscode配置篇②-gitbash</title>
+      <link href="/vscode-gitbash/"/>
+      <url>/vscode-gitbash/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote><p>使用hexo+GitHub搭建好了静态博客之后，剩下的事就是专心写文章了<br>工欲善其事，必先利其器<br>我个人最推荐的工具是<code>Visual Studio Code</code>，即<code>vscode</code>，<a href="https://code.visualstudio.com/Download">官网下载地址</a><br>推荐理由：只在一个软件内就可以完成从写文章到部署的全部工作，并且<code>vscode</code>插件丰富<br>新版本的<code>vscode</code>配置<code>gitbash</code>作为默认终端的方式与旧版本不一致，此文章以<code>vscode1.61.2</code>版本作为演示</p></blockquote><h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><p>下载<code>git</code>并安装，<a href="https://git-scm.com/downloads">官网</a></p><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul><li>在设置中搜索<code>setting.json</code>并打开配置文件</li></ul><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/2021-10-25-20-29-34.png" alt="2021-10-25-20-29-34"></p><ul><li>将配置内容复制粘贴到文件内</li></ul><p><code>注意更改gitbash的路径为自己的git安装路径</code></p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;terminal.integrated.profiles.windows&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;GitBash&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;D:\\Exploitation\\Git\\bin\\bash.exe&quot;</span><span class="punctuation">,</span><span class="comment">//这里是gitbash的安装路径</span></span><br><span class="line">            <span class="attr">&quot;icon&quot;</span><span class="punctuation">:</span> <span class="string">&quot;terminal-bash&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;terminal.integrated.defaultProfile.windows&quot;</span><span class="punctuation">:</span> <span class="string">&quot;GitBash&quot;</span><span class="punctuation">,</span><span class="comment">//使用gitbash作为默认终端</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/2021-10-25-20-34-54.png" alt="2021-10-25-20-34-54"></p><ul><li>配置完成之后重启<code>vscode</code>，打开新终端即为<code>gitbash</code></li></ul><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/2021-10-25-20-43-45.png" alt="2021-10-25-20-43-45"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vscode </tag>
+            
+            <tag> gitbash </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vscode配置篇①-picgo</title>
+      <link href="/vscode-picgo/"/>
+      <url>/vscode-picgo/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote><p>使用hexo+GitHub搭建好了静态博客之后，剩下的事就是专心写文章了<br>工欲善其事，必先利其器<br>我个人最推荐的工具是<code>Visual Studio Code</code>，即<code>vscode</code>，<a href="https://code.visualstudio.com/Download">官网下载地址</a><br>推荐理由：只在一个软件内就可以完成从写文章到部署的全部工作，并且<code>vscode</code>插件丰富<br>使用<code>vscode</code>配置<code>picgo</code>插件的方式可以实现插入图片的同时上传图片到指定图床，此文章以配置<code>picgo</code>上传<code>github图床</code>作为演示</p></blockquote><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p>在<code>vscode</code>的扩展中搜索<code>picgo</code>和<code>Chinese</code>安装两款插件</p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/2021-10-24-17-10-33.png" alt="2021-10-24-17-10-33"></p><h3 id="更改默认配置"><a href="#更改默认配置" class="headerlink" title="更改默认配置"></a>更改默认配置</h3><p>详细配置可以访问<a href="https://marketplace.visualstudio.com/items?itemName=Spades.vs-picgo">插件官网</a></p><ul><li>点击左下角<code>管理</code>-<code>设置</code></li></ul><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/2021-10-24-17-18-06.png" alt="2021-10-24-17-18-06"></p><ul><li>依次在<code>用户</code>-<code>扩展</code>下找到<code>PicGo</code></li></ul><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/2021-10-24-17-21-14.png" alt="2021-10-24-17-21-14"></p><ul><li>按照如下图所示进行相关配置</li></ul><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/2021-10-24-17-27-53.png" alt="2021-10-24-17-27-53"></p><p><code>配置说明</code></p><blockquote><p>Pic Bed:Current表示：picgo上传图片的默认图床<br>Github:Branch表示：在GitHub创建的图床分支<br>Github:Custom Url表示：图片上传成功后返回的图床地址<br><code>此项配置为选填项，不配置默认是GitHub图床的仓库地址，我这里用了jsdelivr作为cdn加速，所以填写jsdelivr的加速地址</code><br>Github:Path表示：上传图片在GitHub图床中的具体地址<br>Github:Repo表示：GitHub图床的仓库名，格式是 用户名&#x2F;仓库名<br>Github:Token表示：在GitHub账户中设置的Personal access tokens</p></blockquote><ul><li>扩展配置</li></ul><p>配置上传成功后返回的图片名称格式</p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/2021-10-24-17-42-39.png" alt="2021-10-24-17-42-39"></p><h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/2021-10-24-18-06-00.png" alt="2021-10-24-18-06-00"></p><blockquote><p>Windows系统<br>Ctrl + Alt + U：从剪贴板上传<br>Ctrl + Alt + E：从资源管理器上传</p></blockquote><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>配置完成，从<code>vscode</code>的<code>setting.json</code>文件中可以看到配置的内容</p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/2021-10-24-18-03-55.png" alt="2021-10-24-18-03-55"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vscode </tag>
+            
+            <tag> picgo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>idea2021.2.3试用方案</title>
+      <link href="/idea-active/"/>
+      <url>/idea-active/</url>
+      
+        <content type="html"><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载安装最新版，下载地址：<a href="https://www.jetbrains.com/zh-cn/idea/download/">官网</a></p><h2 id="临时试用"><a href="#临时试用" class="headerlink" title="临时试用"></a>临时试用</h2><p>2021.2.3版本开始，idea试用需要登录账号或者输入key</p><h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h3><p>输入<code>Activation code</code></p><p>key获取地址：<a href="https://jetbra.in/test-7b06e3ddfa68ff9b483adfcd08cdd243831f7928.html">热心大佬提供的key</a></p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/202110231847942.png" alt="image.png"></p><p>将上图红框内的内容复制到如下图位置</p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/202110231848436.png" alt="image.png"></p><p>点击<code>Activate</code></p><h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><p>官网注册账号，此处不做具体演示</p><h2 id="无限试用"><a href="#无限试用" class="headerlink" title="无限试用"></a>无限试用</h2><p>通过大佬开发的插件无限试用</p><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>下载地址：<a href="https://url67.ctfile.com/f/34008667-518572448-e10b8b">ide-eval-resetter</a><br>访问密码：2462</p><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>将下载的压缩包解压</p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/202110231903192.png" alt="image.png"></p><p>idea新建任意项目，进入项目，将解压后的jar包拖入编辑区，出现如下提示</p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/202110231908617.png" alt="image.png"></p><p>点击<code>Accept</code>，提示插件安装成功</p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/202110231909031.png" alt="image.png"></p><p>点击工具栏<code>Help</code>-<code>Eval Reset</code></p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/202110231915518.png" alt="image.png"></p><p>勾选<code>Auto reset before per restart</code>之后点击<code>Reset</code></p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/202110231918438.png" alt="image.png"></p><p>弹出的对话框中选择<code>Yes</code>重启idea</p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/202110231922601.png" alt="image.png"></p><p>到此idea无限试用成功，之后每次重启idea就会重置试用时间为30天</p><p><code>理论上此无限试用方案适用于idea全家桶</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> idea </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>docker环境nginx部署应用并配置ssl</title>
+      <link href="/docker-nginx-ssl/"/>
+      <url>/docker-nginx-ssl/</url>
+      
+        <content type="html"><![CDATA[<h2 id="docker部署nginx"><a href="#docker部署nginx" class="headerlink" title="docker部署nginx"></a>docker部署nginx</h2><p><a href="https://codesensi.cn/docker/linux-docker-nginx/">linux使用docker部署nginx</a></p><h2 id="部署静态项目"><a href="#部署静态项目" class="headerlink" title="部署静态项目"></a>部署静态项目</h2><p>将项目上传至<code>/usr/share/nginx/html</code>挂载在宿主机的资源目录下，此处为：<code>/home/docker/nginx/html</code></p><p><code>注：index.html处于根目录</code></p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/202110192126964.png" alt="image.png"></p><h2 id="重启nginx"><a href="#重启nginx" class="headerlink" title="重启nginx"></a>重启nginx</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker restart nginx</span><br></pre></td></tr></table></figure><h2 id="配置ssl"><a href="#配置ssl" class="headerlink" title="配置ssl"></a>配置ssl</h2><h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /home/docker/nginx/conf.d</span><br><span class="line">vim demo.conf</span><br></pre></td></tr></table></figure><p>按需复制以下内容粘贴到<code>demo.conf</code>  </p><ul><li>静态项目使用</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80; # 监听80端口</span><br><span class="line">    server_name demo.com www.demo.com;  # 绑定证书的域名</span><br><span class="line">    #把http的域名请求转成https</span><br><span class="line">    return 301 https://$host$request_uri; </span><br><span class="line">&#125;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"># </span><span class="language-bash">强制重定向</span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl;</span><br><span class="line">    server_name demo.com www.demo.com;  # 自己的域名</span><br><span class="line">    ssl_certificate /home/cert/4312001_demo.top.pem;</span><br><span class="line">    ssl_certificate_key /home/cert/4312001_demo.top.key;</span><br><span class="line">    ssl_session_timeout 5m;</span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root /usr/share/nginx/html;</span><br><span class="line">        index index.html;</span><br><span class="line">        proxy_set_header HOST $host;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>非静态项目使用</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">upstream demo &#123;</span><br><span class="line">  server 127.0.0.1:8080;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">     listen 80; # 监听80端口</span><br><span class="line">     server_name demo.com www.demo.com;  # 绑定证书的域名</span><br><span class="line">     #把http的域名请求转成https</span><br><span class="line">     return 301 https://$host$request_uri; </span><br><span class="line">&#125;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"># </span><span class="language-bash">强制重定向</span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl;</span><br><span class="line">    server_name demo.com www.demo.com;  # 自己的域名</span><br><span class="line">    ssl_certificate /home/cert/demo.com.pem;</span><br><span class="line">    ssl_certificate_key /home/cert/demo.com.key;</span><br><span class="line">    ssl_session_timeout 5m;</span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://demo;</span><br><span class="line">        proxy_set_header HOST $host;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>注：upstream demo &#123;server 127.0.0.1:8080;&#125; 中，demo是部署在服务器中的非静态项目名称，8080是端口号</code></p><h2 id="上传ssl证书"><a href="#上传ssl证书" class="headerlink" title="上传ssl证书"></a>上传ssl证书</h2><p>此处上传路径为：<code>/home/docker/nginx/cert</code></p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/202110192133381.png" alt="image.png"></p><h2 id="重启nginx-1"><a href="#重启nginx-1" class="headerlink" title="重启nginx"></a>重启nginx</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker restart nginx</span><br></pre></td></tr></table></figure><p>浏览器使用域名访问即可</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker容器 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> nginx </tag>
+            
+            <tag> ssl </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux使用docker部署nginx</title>
+      <link href="/linux-docker-nginx/"/>
+      <url>/linux-docker-nginx/</url>
+      
+        <content type="html"><![CDATA[<h2 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h2><p>centos系统：<a href="https://codesensi.cn/docker/centos7.6-docker/">centos7.6安装docker</a><br>ubuntu系统：<a href="https://codesensi.cn/docker/ubuntu20.04.3-docker/">ubuntu20.04.3安装docker</a></p><h2 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull nginx</span><br></pre></td></tr></table></figure><h2 id="创建相关路径"><a href="#创建相关路径" class="headerlink" title="创建相关路径"></a>创建相关路径</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /home/docker/nginx/&#123;html,conf.d,logs,cert&#125;</span><br></pre></td></tr></table></figure><p>参数说明：</p><blockquote><p><code>html：存放静态项目</code><br><code>conf.d：存放配置文件</code><br><code>logs：存放日志文件</code><br><code>cert：存放ssl证书</code></p></blockquote><h2 id="授予访问权限"><a href="#授予访问权限" class="headerlink" title="授予访问权限"></a>授予访问权限</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod -R 777 /home/docker/nginx</span><br></pre></td></tr></table></figure><h2 id="运行临时nginx"><a href="#运行临时nginx" class="headerlink" title="运行临时nginx"></a>运行临时nginx</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -p 80:80 --name nginx -d nginx</span><br></pre></td></tr></table></figure><h2 id="复制配置文件到宿主机"><a href="#复制配置文件到宿主机" class="headerlink" title="复制配置文件到宿主机"></a>复制配置文件到宿主机</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp nginx:/etc/nginx/conf.d /home/docker/nginx</span><br><span class="line">sudo docker cp nginx:/etc/nginx/nginx.conf /home/docker/nginx</span><br></pre></td></tr></table></figure><h2 id="删除临时nginx"><a href="#删除临时nginx" class="headerlink" title="删除临时nginx"></a>删除临时nginx</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker rm -f nginx</span><br></pre></td></tr></table></figure><h2 id="运行nginx"><a href="#运行nginx" class="headerlink" title="运行nginx"></a>运行nginx</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --name nginx \</span><br><span class="line">    -p 80:80 -p 443:443 \</span><br><span class="line">    -v /home/docker/nginx/html:/usr/share/nginx/html \</span><br><span class="line">    -v /home/docker/nginx/nginx.conf:/etc/nginx/nginx.conf \</span><br><span class="line">    -v /home/docker/nginx/conf.d:/etc/nginx/conf.d \</span><br><span class="line">    -v /home/docker/nginx/logs:/var/log/nginx \</span><br><span class="line">    -v /home/docker/nginx/cert:/home/cert \</span><br><span class="line">    -d --net=host --restart always nginx</span><br></pre></td></tr></table></figure><p>注意事项：</p><ul><li>若无需nginx代理静态项目则删除：<code>-v /home/docker/nginx/html:/usr/share/nginx/html \</code></li><li>若无需nginx配置https访问则删除：<code>-v /home/docker/nginx/cert:/home/cert \</code></li></ul><p>参数说明：</p><blockquote><p><code>-p: 指定端口映射，格式为：宿主机端口:容器端口</code><br><code>-v：挂载宿主机目录到容器，格式为：宿主机目录:容器目录</code><br><code>--net-host：指定容器的网络连接类型，支持bridge/host/none/container</code></p></blockquote><h2 id="查看正在运行的docker容器"><a href="#查看正在运行的docker容器" class="headerlink" title="查看正在运行的docker容器"></a>查看正在运行的docker容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker ps</span><br></pre></td></tr></table></figure><h2 id="查看页面"><a href="#查看页面" class="headerlink" title="查看页面"></a>查看页面</h2><p>宿主机在浏览器地址栏使用服务器ip访问</p><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/blog/202110192100140.png" alt="image.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker容器 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> nginx </tag>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>centos7.6安装docker</title>
+      <link href="/centos7.6-docker/"/>
+      <url>/centos7.6-docker/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://docs.docker.com/engine/install/centos/">Docker官方安装文档</a></p><h2 id="卸载旧版本"><a href="#卸载旧版本" class="headerlink" title="卸载旧版本"></a>卸载旧版本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">    docker-client \</span><br><span class="line">    docker-client-latest \</span><br><span class="line">    docker-common \</span><br><span class="line">    docker-latest \</span><br><span class="line">    docker-latest-logrotate \</span><br><span class="line">    docker-logrotate \</span><br><span class="line">    docker-engine</span><br></pre></td></tr></table></figure><h2 id="更新数据源"><a href="#更新数据源" class="headerlink" title="更新数据源"></a>更新数据源</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update -y</span><br></pre></td></tr></table></figure><h2 id="安装必备依赖"><a href="#安装必备依赖" class="headerlink" title="安装必备依赖"></a>安装必备依赖</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y yum-utils</span><br></pre></td></tr></table></figure><h2 id="添加稳定数据源"><a href="#添加稳定数据源" class="headerlink" title="添加稳定数据源"></a>添加稳定数据源</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure><h2 id="安装最新版本"><a href="#安装最新版本" class="headerlink" title="安装最新版本"></a>安装最新版本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure><h2 id="设置开机自启"><a href="#设置开机自启" class="headerlink" title="设置开机自启"></a>设置开机自启</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable docker</span><br></pre></td></tr></table></figure><h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure><h2 id="配置镜像加速"><a href="#配置镜像加速" class="headerlink" title="配置镜像加速"></a>配置镜像加速</h2><h3 id="创建配置文件目录"><a href="#创建配置文件目录" class="headerlink" title="创建配置文件目录"></a>创建配置文件目录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker</span><br></pre></td></tr></table></figure><h3 id="配置加速"><a href="#配置加速" class="headerlink" title="配置加速"></a>配置加速</h3><p>阿里云加速需要登陆阿里云账户，点击 <a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors">阿里云加速</a> 获取加速镜像源。</p><!--我的id：***** rft0kn6w --><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [</span><br><span class="line">      &quot;https://阿里云id.mirror.aliyuncs.com&quot;,</span><br><span class="line">      &quot;https://registry.docker-cn.com&quot;,</span><br><span class="line">      &quot;https://dockerhub.azk8s.cn&quot;,</span><br><span class="line">      &quot;https://docker.mirrors.ustc.edu.cn&quot;,</span><br><span class="line">      &quot;https://reg-mirror.qiniu.com&quot;,</span><br><span class="line">      &quot;https://hub-mirror.c.163.com&quot;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure><h2 id="加载配置"><a href="#加载配置" class="headerlink" title="加载配置"></a>加载配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure><h2 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure><h2 id="验证安装"><a href="#验证安装" class="headerlink" title="验证安装"></a>验证安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker --version</span><br></pre></td></tr></table></figure><h2 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker info</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker容器 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> centos </tag>
+            
+            <tag> docker </tag>
+            
+            <tag> yum </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Mybatis模糊查询写法</title>
+      <link href="/mybatis-query-like/"/>
+      <url>/mybatis-query-like/</url>
+      
+        <content type="html"><![CDATA[<p>模糊查询语句不建议使用<code>$&#123;&#125;</code>的方式，还是建议采用<code>MyBatis</code>自带的<code>#&#123;&#125;</code>方式。</p><p><code>#&#123;&#125;</code>是预加载的方式运行的，比较安全，<code>$&#123;&#125;</code>方式可以用但是有SQL注入的风险！！！</p><h2 id="方式1"><a href="#方式1" class="headerlink" title="方式1"></a>方式1</h2><p>直接传参</p><p>在<code>controller</code>类中</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">id</span> <span class="operator">=</span> <span class="string">&quot;%&quot;</span>+ id +<span class="string">&quot;%&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;%&quot;</span>+ name +<span class="string">&quot;%&quot;</span>;</span><br><span class="line">dao.selectByIdAndName(id,name);</span><br></pre></td></tr></table></figure><p>在<code>mapper.xml</code>映射文件中</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select&gt;</span><br><span class="line">    select * from table wherer id=#&#123;id&#125; or name like #&#123;name&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure><h2 id="方式2"><a href="#方式2" class="headerlink" title="方式2"></a>方式2</h2><p>只针对<code>MySQL</code>数据库：</p><p>采用<code>concat()</code>函数，它可以将多个字符串连接成一个字符。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select&gt;</span><br><span class="line">    select * from table where name like <span class="title function_">concat</span><span class="params">(<span class="string">&#x27;%&#x27;</span>,#&#123;name&#125;,<span class="string">&#x27;%&#x27;</span>)</span></span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure><h2 id="方式3"><a href="#方式3" class="headerlink" title="方式3"></a>方式3</h2><p>适用于所有数据库：<code>bind</code>元素</p><h3 id="单一参数"><a href="#单一参数" class="headerlink" title="单一参数"></a>单一参数</h3><p>方法传入参数</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> xx <span class="title function_">selectByLike</span><span class="params">(<span class="meta">@Param(&quot;_name&quot;)</span> String name)</span>;</span><br></pre></td></tr></table></figure><p><code>xml</code>映射文件</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=<span class="string">&quot;selectByLike&quot;</span>&gt;</span><br><span class="line">    &lt;bind name=<span class="string">&quot;user_name&quot;</span> value=<span class="string">&quot;&#x27;%&#x27; + _name + &#x27;%&#x27;&quot;</span>/&gt;</span><br><span class="line">    select * from table where name like #&#123;user_name&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure><p>其中<code>_name</code>为传递进来的参数，<code>bind</code>元素的<code>value</code>属性将传进来的参数和 <code>&#39;%&#39;</code> 拼接到一起后赋给<code>name</code>属性的<code>user_name</code>，之后可以在<code>select</code>语句中使用<code>user_name</code>这个变量。</p><h3 id="多参数"><a href="#多参数" class="headerlink" title="多参数"></a>多参数</h3><p><code>bind</code>元素也支持传递多个参数</p><p>方法传入参数</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> xx <span class="title function_">selectByLike</span><span class="params">(<span class="meta">@Param(&quot;_name&quot;)</span> String name, <span class="meta">@Param(&quot;_note&quot;)</span> String note)</span>;</span><br></pre></td></tr></table></figure><p><code>xml</code>映射文件</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=<span class="string">&quot;selectByLike&quot;</span>&gt;</span><br><span class="line">    &lt;bind name=<span class="string">&quot;user_name&quot;</span> value=<span class="string">&quot;&#x27;%&#x27; + _name + &#x27;%&#x27;&quot;</span>/&gt;</span><br><span class="line">    &lt;bind name=<span class="string">&quot;user_note&quot;</span> value=<span class="string">&quot;&#x27;%&#x27; + _note + &#x27;%&#x27;&quot;</span>/&gt;</span><br><span class="line">    select * from table where name like #&#123;user_name&#125; and note like #&#123;user_note&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java编程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> mybatis </tag>
+            
+            <tag> mapper </tag>
+            
+            <tag> bind </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Oracle批量更新数据库</title>
+      <link href="/oracle-batchupdate/"/>
+      <url>/oracle-batchupdate/</url>
+      
+        <content type="html"><![CDATA[<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 使用隐式游标进行分批次更新 */</span></span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">  V_COUNT NUMBER(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="comment">/* 隐式游标 */</span></span><br><span class="line">  <span class="keyword">FOR</span> TEMP_CURSOR <span class="keyword">IN</span> (<span class="keyword">SELECT</span> t.factorycode <span class="keyword">from</span> prplrepairfactory t <span class="keyword">WHERE</span> t.comcode <span class="operator">=</span> <span class="string">&#x27;06340000&#x27;</span>) LOOP</span><br><span class="line">    <span class="comment">/* 业务逻辑 */</span></span><br><span class="line">    <span class="keyword">UPDATE</span> prplrepairfactory</span><br><span class="line">     <span class="comment">/* 生成 8位数的随机正整数 */</span></span><br><span class="line">     <span class="keyword">SET</span> factorycode <span class="operator">=</span> ((<span class="keyword">select</span> trunc(dbms_random.value(<span class="number">10000000</span>,<span class="number">99999999</span>)) <span class="keyword">from</span> dual) <span class="operator">||</span> <span class="string">&#x27;X&#x27;</span>)</span><br><span class="line">     <span class="keyword">WHERE</span> comcode <span class="operator">=</span> <span class="string">&#x27;06340000&#x27;</span></span><br><span class="line">     <span class="keyword">AND</span> factorycode <span class="operator">=</span> TEMP_CURSOR.FACTORYCODE;</span><br><span class="line">    <span class="comment">/* 更新一次，+1 */</span></span><br><span class="line">    V_COUNT :<span class="operator">=</span> V_COUNT <span class="operator">+</span> <span class="number">1</span>;</span><br><span class="line">    <span class="comment">/* 1000条提交1次 */</span></span><br><span class="line">    IF V_COUNT <span class="operator">&gt;=</span> <span class="number">1000</span> <span class="keyword">THEN</span></span><br><span class="line">      <span class="keyword">COMMIT</span>; <span class="comment">--提交</span></span><br><span class="line">      V_COUNT :<span class="operator">=</span> <span class="number">0</span>; <span class="comment">--重置</span></span><br><span class="line">    <span class="keyword">END</span> IF;</span><br><span class="line">  <span class="keyword">END</span> LOOP;</span><br><span class="line">  <span class="comment">--COMMIT; -- 提交所有数据，把这个去掉，可以查看是否是自己想要的效果，再决定是否提交</span></span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure><h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>Oracle序列</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 查询所有序列</span><br><span class="line"><span class="keyword">Select</span> <span class="operator">*</span> <span class="keyword">from</span> all_sequences;</span><br><span class="line"># 查询序列的下一个值</span><br><span class="line"><span class="keyword">select</span> seq_factory.nextval <span class="keyword">from</span> dual;</span><br><span class="line"># 创建序列</span><br><span class="line"><span class="keyword">CREATE</span> SEQUENCE seq_factory</span><br><span class="line"><span class="keyword">START</span> <span class="keyword">WITH</span> <span class="number">10000001</span> <span class="comment">--开始值</span></span><br><span class="line">INCREMENT <span class="keyword">BY</span> <span class="number">1</span> <span class="comment">--每次自增1</span></span><br><span class="line">MAXVALUE <span class="number">99999999</span> <span class="comment">--最大值</span></span><br><span class="line">NOCYCLE; <span class="comment">--不循环</span></span><br><span class="line"># 删除序列</span><br><span class="line"><span class="keyword">DROP</span> SEQUENCE seq_factory;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> SQL语言 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> oracle </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java实现定时任务</title>
+      <link href="/java-timertask/"/>
+      <url>/java-timertask/</url>
+      
+        <content type="html"><![CDATA[<h2 id="原生Spring方式"><a href="#原生Spring方式" class="headerlink" title="原生Spring方式"></a>原生Spring方式</h2><ul><li>定义初始化类</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">A</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">Timer</span> <span class="variable">timer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Timer</span>(<span class="literal">true</span>);</span><br><span class="line">        timer.schedule(<span class="keyword">new</span> <span class="title class_">B</span>(), firstTime, period);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>注：Timer.schedule(TimerTask, firstTime, period) 方法的第二个参数如果为 new Date()，则定时任务会运行两次</code></p><ul><li>定义执行类</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">B</span> <span class="keyword">extends</span> <span class="title class_">TimerTask</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;开始执行定时任务&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="注解方式"><a href="#注解方式" class="headerlink" title="注解方式"></a>注解方式</h2><p>通过数据库配置cron表达式，较为灵活</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@EnableScheduling</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AutoReuploadPlatTask</span> <span class="keyword">implements</span> <span class="title class_">SchedulingConfigurer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// cron表达式</span></span><br><span class="line">    <span class="comment">// */5 * * * * ? ：每隔5秒执行一次</span></span><br><span class="line">    <span class="comment">// 0 */1 * * * ? ：每隔1分钟执行一次</span></span><br><span class="line">    <span class="comment">// 0 0 23 * * ? ：每天23点执行一次</span></span><br><span class="line">    <span class="comment">// 0 0 3 * * ? ：每天凌晨3点执行一次：</span></span><br><span class="line">    <span class="comment">// 0 0 1 1 * ? ：每月1号凌晨1点执行一次</span></span><br><span class="line">    <span class="comment">// 0 26,29,33 * * * ? ： 在26分、29分、33分执行一次</span></span><br><span class="line">    <span class="comment">// 0 0 0,13,18,21 * * ? ： 每天的0点、13点、18点、21点都执行一次</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String cron;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configureTasks</span><span class="params">(ScheduledTaskRegistrar taskRegistrar)</span> &#123;</span><br><span class="line">        <span class="comment">// 项目部署时，会在这里执行一次，从数据库拿到cron表达式</span></span><br><span class="line">        cron = getCron();</span><br><span class="line">        <span class="type">Runnable</span> <span class="variable">task</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="comment">// 任务逻辑代码部分</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="type">Trigger</span> <span class="variable">trigger</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Trigger</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> Date <span class="title function_">nextExecutionTime</span><span class="params">(TriggerContext triggerContext)</span> &#123;</span><br><span class="line">                <span class="comment">// 任务触发，可修改任务的执行周期.</span></span><br><span class="line">                <span class="comment">// 每一次任务触发，都会执行这里的方法一次，重新获取下一次的执行时间</span></span><br><span class="line">                cron = getCron();</span><br><span class="line">                <span class="type">CronTrigger</span> <span class="variable">trigger</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CronTrigger</span>(cron);</span><br><span class="line">                <span class="type">Date</span> <span class="variable">nextExec</span> <span class="operator">=</span> trigger.nextExecutionTime(triggerContext);</span><br><span class="line">                <span class="keyword">return</span> nextExec;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        taskRegistrar.addTriggerTask(task, trigger);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java编程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spring </tag>
+            
+            <tag> TimerTask </tag>
+            
+            <tag> EnableScheduling </tag>
+            
+            <tag> cron表达式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+    
+    
+    <entry>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="关于龙猫"><a href="#关于龙猫" class="headerlink" title="关于龙猫"></a>关于龙猫</h2><blockquote><p>自我认知：没有最菜只有更菜，我只会比别人更菜。<br>自我成就：Java刚刚入门的一枚菜鸡，我坚信“JavaScript是世界上最好的编程语言”。<br>自我肯定：干啥啥不行，划水第一名。<br>自我总结：怎一个菜字了得。</p></blockquote><img style="display: block; margin: 0 auto;" src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/jpg/cai.jpg" alt="我太菜了" /><h2 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h2><blockquote><p>想到什么写什么，记录点点滴滴。</p></blockquote>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>小情绪</title>
+      <link href="/artitalk/index.html"/>
+      <url>/artitalk/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>龙猫认真记录~</title>
+      <link href="/gallery/index.html"/>
+      <url>/gallery/index.html</url>
+      
+        <content type="html"><![CDATA[<div class="gallery-group-main">  <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">电脑壁纸</div>  <p>超高分辨率的电脑壁纸</p>  <a href='/gallery/computer'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">手机壁纸</div>  <p>适配全面屏的手机壁纸</p>  <a href='/gallery/mobile'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/default/001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">默认相册</div>  <p>不知道怎么分类的图片</p>  <a href='/gallery/default'></a>  </figcaption>  </figure>  </div>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/custom/custom_fonts.css"/>
+      <url>/custom/custom_fonts.css</url>
+      
+        <content type="html"><![CDATA[@font-face {    font-family: 'Harmony';    /* 字体名自定义即可 */    src: url('/custom/HarmonyOS_Sans_SC_Bold.ttf');    /* 字体文件路径 */    font-display: swap;}body {    font-family: 'Harmony', sans-serif;}]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>龙猫聆听着~</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
+      
+        <content type="html"><![CDATA[    <div id="aplayer-aFWnMnTt" class="aplayer aplayer-tag-marker meting-tag-marker"         data-id="2829816518" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#3F51B5"    ></div>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="友链申请模板"><a href="#友链申请模板" class="headerlink" title="友链申请模板"></a>友链申请模板</h2><blockquote><p>name：龙猫汪汪汪<br>link：<a href="https://codesensi.cn/">https://codesensi.cn</a><br>avatar：<a href="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/png/Avatar.png">https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/png/Avatar.png</a><br>descr：谁说站在光里的才算英雄</p></blockquote>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>默认相册</title>
+      <link href="/gallery/default/index.html"/>
+      <url>/gallery/default/index.html</url>
+      
+        <content type="html"><![CDATA[<div class="fj-gallery"><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/default/001.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/default/002.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/default/003.png"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/default/004.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/default/005.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/default/006.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/default/007.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/default/008.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/default/009.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/default/010.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/default/011.png"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/default/012.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/default/013.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/default/014.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/default/015.jpg"></p>          </div>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>电脑壁纸</title>
+      <link href="/gallery/computer/index.html"/>
+      <url>/gallery/computer/index.html</url>
+      
+        <content type="html"><![CDATA[<div class="fj-gallery"><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801001.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801002.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801003.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801004.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801005.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801006.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801007.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801008.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801009.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801010.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801011.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801012.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801013.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801014.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801015.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801016.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801017.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801018.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801019.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801020.png"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801021.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801022.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801023.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801024.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801025.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801026.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801027.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801028.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801029.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801030.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801031.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801032.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801033.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801034.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801035.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801036.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801037.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801038.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801039.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801040.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801041.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801042.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801043.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801044.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801045.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801046.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801047.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801048.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801049.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801050.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801051.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/computer/20200801052.jpg"></p>          </div>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/custom/twikoo_beautify.css"/>
+      <url>/custom/twikoo_beautify.css</url>
+      
+        <content type="html"><![CDATA[/* 自定义twikoo评论输入框高度 */.tk-input[data-v-619b4c52] .el-textarea__inner {    height: 130px !important;}/* 输入评论时自动隐藏输入框背景图片 */.tk-input[data-v-619b4c52] .el-textarea__inner:focus {    background-image: none !important;}/* 调整楼中楼样式 ，整体左移，贴合气泡化效果 */.tk-replies {    left: -70px;    width: calc(100% + 70px);}/* 头像宽度调整 rem单位与全局字体大小挂钩，需配合自己情况调整大小以保证头像显示完整*/.tk-replies .tk-avatar {    width: 2.5rem !important;    height: 2.5rem !important;}.tk-replies .tk-avatar img {    width: 2.5rem !important;    height: 2.5rem !important;}/* 回复框左移，避免窄屏时出框 */.tk-comments-container .tk-submit {    position: relative;    left: -70px;}/* 评论块气泡化修改 */.tk-content {    background: #00a6ff;    /*默认模式访客气泡配色*/    padding: 10px;    color: #fff;    /*默认模式访客气泡字体配色*/    border-radius: 10px;    font-size: 16px !important;    width: fit-content;    max-width: 100%;    position: relative !important;    overflow: visible !important;    max-height: none !important;}/* 修复图片出框 */.tk-content img {    max-width: 100% !important;}/* 修复过长文本出框 */.tk-content pre {    white-space: pre-wrap;    word-wrap: break-word;}.tk-content a {    color: #eeecaa;    /*默认模式超链接配色*/}.tk-content::before {    content: '';    width: 0;    height: 0;    position: absolute;    top: 20px;    left: -13px;    border-top: 2px solid transparent;    border-bottom: 20px solid transparent;    border-right: 15px solid #00a6ff;    /*默认模式访客气泡小三角配色*/    border-left: 0px solid transparent;}.tk-master .tk-content {    background: #ff8080;    /*默认模式博主气泡配色*/    color: #fff;    /*默认模式博主气泡字体配色*/    width: fit-content;    max-width: 100%;}.tk-master .tk-content a {    color: #eeecaa;}.tk-master .tk-content::before {    content: '';    width: 0;    height: 0;    position: absolute;    top: 20px;    left: -13px;    border-top: 2px solid transparent;    border-bottom: 20px solid transparent;    border-right: 15px solid #ff8080;    /*默认模式博主气泡小三角配色*/    border-left: 0px solid transparent;}.tk-row[data-v-d82ce9a0] {    max-width: 100%;    width: fit-content;}.tk-avatar {    border-radius: 50%;    margin-top: 10px;}/* 夜间模式配色，具体比照上方默认模式class */[data-theme="dark"] .tk-content {    background: #000;    color: #fff;}[data-theme="dark"] .tk-content a {    color: #dfa036;}[data-theme="dark"] .tk-content::before {    border-right: 15px solid #000;}[data-theme="dark"] .tk-master .tk-content {    background: #000;    color: #fff;}[data-theme="dark"] .tk-master .tk-content a {    color: #dfa036;}[data-theme="dark"] .tk-master .tk-content::before {    border-top: 2px solid transparent;    border-bottom: 20px solid transparent;    border-right: 15px solid #000;    border-left: 0px solid transparent;}/* 自适应内容 */@media screen and (min-width: 1024px) {    /* 设置宽度上限，避免挤压博主头像 */    .tk-content {        max-width: 75%;        width: fit-content;    }    .tk-master .tk-content {        width: 75%;    }    .tk-master .tk-content::before {        left: 100%;        border-left: 15px solid #ff8080;        border-right: 0px solid transparent;    }    .tk-master .tk-avatar {        position: relative;        left: calc(75% + 70px);    }    .tk-master .tk-row[data-v-d82ce9a0] {        position: relative;        top: 0px;        left: calc(75% - 230px);    }    [data-theme="dark"] .tk-master .tk-content::before {        border-left: 15px solid #000;        border-right: 0px solid transparent;    }}/* 设备名称常态隐藏，悬停评论时显示 */.tk-extras {    opacity: 0;    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";    filter: alpha(opacity=0);}.tk-content:hover+.tk-extras {    -webkit-animation: tk-extras-fadeIn 0.5s linear;    -moz-animation: tk-extras-fadeIn 0.5s linear;    -o-animation: tk-extras-fadeIn 0.5s linear;    -ms-animation: tk-extras-fadeIn 0.5s linear;    animation: tk-extras-fadeIn 0.5s linear;    -webkit-animation-fill-mode: forwards;    -moz-animation-fill-mode: forwards;    -o-animation-fill-mode: forwards;    -ms-animation-fill-mode: forwards;    animation-fill-mode: forwards;}@-moz-keyframes tk-extras-fadeIn {    from {        opacity: 0;        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";        filter: alpha(opacity=0);    }    to {        opacity: 1;        -ms-filter: none;        filter: none;    }}@-webkit-keyframes tk-extras-fadeIn {    from {        opacity: 0;        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";        filter: alpha(opacity=0);    }    to {        opacity: 1;        -ms-filter: none;        filter: none;    }}@-o-keyframes tk-extras-fadeIn {    from {        opacity: 0;        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";        filter: alpha(opacity=0);    }    to {        opacity: 1;        -ms-filter: none;        filter: none;    }}@keyframes tk-extras-fadeIn {    from {        opacity: 0;        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";        filter: alpha(opacity=0);    }    to {        opacity: 1;        -ms-filter: none;        filter: none;    }}]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>手机壁纸</title>
+      <link href="/gallery/mobile/index.html"/>
+      <url>/gallery/mobile/index.html</url>
+      
+        <content type="html"><![CDATA[<div class="fj-gallery"><p><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018001.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018002.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018003.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018004.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018005.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018006.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018007.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018008.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018009.png"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018010.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018011.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018012.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018013.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018014.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018015.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018016.png"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018017.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018018.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018019.png"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018020.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018021.png"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018022.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018023.png"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018024.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018025.png"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018026.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018027.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018028.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018029.png"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018030.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018031.png"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018032.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018033.png"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018034.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018035.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018036.png"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018037.png"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018038.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018039.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018040.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018041.png"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018042.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018043.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018044.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018045.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018046.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018047.png"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018048.jpg"><br><img src="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/mobile/20211018049.jpg"></p>          </div>]]></content>
+      
+    </entry>
+    
+    
+  
+</search>
