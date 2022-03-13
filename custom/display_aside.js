@@ -1,0 +1,1 @@
+if(location.pathname.includes("archive")){const e=document.documentElement.classList;e.contains("hide-aside")?saveToLocal.set("aside-status","show",2):saveToLocal.set("aside-status","hide",2),e.toggle("hide-aside")}
