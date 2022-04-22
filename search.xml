@@ -506,6 +506,17 @@
     
     
     <entry>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="/custom/bg_gradient.css"/>
       <url>/custom/bg_gradient.css</url>
@@ -529,10 +540,10 @@
     
     <entry>
       <title></title>
-      <link href="/custom/grayscale.js"/>
-      <url>/custom/grayscale.js</url>
+      <link href="/custom/diytitle.js"/>
+      <url>/custom/diytitle.js</url>
       
-        <content type="html"><![CDATA[if (PublicSacrificeDay()) {    document.getElementsByTagName("html")[0].setAttribute("style", "filter:gray !important;filter:grayscale(100%);-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);");}function PublicSacrificeDay() {    var PSFarr = new Array("0403", "0404", "0405", "0414", "0512", "0707", "0807", "0814", "0909", "0918", "0930", "1025", "1213");    //2020年4月4日 新冠肺炎哀悼日，清明节    //2010年4月14日，青海玉树地震    //2008年5月12日，四川汶川地震    //1937年7月7日,七七事变 又称卢沟桥事变    //2010年8月7日，甘肃舟曲特大泥石流    //8月14日，世界慰安妇纪念日    //1976年9月9日，毛主席逝世    //1931年9月18日，九一八事变    //烈士纪念日为每年9月30日    //1950年10月25日，抗美援朝纪念日    //1937年12月13日，南京大屠杀    var currentdate = new Date();    var str = "";    var mm = currentdate.getMonth() + 1;    if (currentdate.getMonth() > 9) {        str += mm;    } else {        str += "0" + mm;    }    if (currentdate.getDate() > 9) {        str += currentdate.getDate();    } else {        str += "0" + currentdate.getDate();    }    if (PSFarr.indexOf(str) > -1) {        return 1;    } else {        return 0;    }}]]></content>
+        <content type="html"><![CDATA[//动态标题var OriginTitile = document.title;var titleTime;document.addEventListener('visibilitychange', function() {    if (document.hidden) {        //离开当前页面时标签显示内容        document.title = 'w(ﾟДﾟ)w 嗨呀！404啦！';        clearTimeout(titleTime);    } else {        //返回当前页面时标签显示内容        document.title = '♪(^∇^*)嘿嘿！骗你哒~' + OriginTitile;        //两秒后变回正常标题        titleTime = setTimeout(function() {            document.title = OriginTitile;        }, 2000);    }});]]></content>
       
     </entry>
     
@@ -540,10 +551,10 @@
     
     <entry>
       <title></title>
-      <link href="/custom/diytitle.js"/>
-      <url>/custom/diytitle.js</url>
+      <link href="/custom/grayscale.js"/>
+      <url>/custom/grayscale.js</url>
       
-        <content type="html"><![CDATA[//动态标题var OriginTitile = document.title;var titleTime;document.addEventListener('visibilitychange', function() {    if (document.hidden) {        //离开当前页面时标签显示内容        document.title = 'w(ﾟДﾟ)w 嗨呀！404啦！';        clearTimeout(titleTime);    } else {        //返回当前页面时标签显示内容        document.title = '♪(^∇^*)嘿嘿！骗你哒~' + OriginTitile;        //两秒后变回正常标题        titleTime = setTimeout(function() {            document.title = OriginTitile;        }, 2000);    }});]]></content>
+        <content type="html"><![CDATA[if (PublicSacrificeDay()) {    document.getElementsByTagName("html")[0].setAttribute("style", "filter:gray !important;filter:grayscale(100%);-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);");}function PublicSacrificeDay() {    var PSFarr = new Array("0403", "0404", "0405", "0414", "0512", "0707", "0807", "0814", "0909", "0918", "0930", "1025", "1213");    //2020年4月4日 新冠肺炎哀悼日，清明节    //2010年4月14日，青海玉树地震    //2008年5月12日，四川汶川地震    //1937年7月7日,七七事变 又称卢沟桥事变    //2010年8月7日，甘肃舟曲特大泥石流    //8月14日，世界慰安妇纪念日    //1976年9月9日，毛主席逝世    //1931年9月18日，九一八事变    //烈士纪念日为每年9月30日    //1950年10月25日，抗美援朝纪念日    //1937年12月13日，南京大屠杀    var currentdate = new Date();    var str = "";    var mm = currentdate.getMonth() + 1;    if (currentdate.getMonth() > 9) {        str += mm;    } else {        str += "0" + mm;    }    if (currentdate.getDate() > 9) {        str += currentdate.getDate();    } else {        str += "0" + currentdate.getDate();    }    if (PSFarr.indexOf(str) > -1) {        return 1;    } else {        return 0;    }}]]></content>
       
     </entry>
     
@@ -572,11 +583,22 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="友链申请模板"><a href="#友链申请模板" class="headerlink" title="友链申请模板"></a>友链申请模板</h2><blockquote><p>name：龙猫汪汪汪<br>link：<a href="https://codesensi.cn/">https://codesensi.cn</a><br>avatar：<a href="https://image.codesensi.cn/mysite/my_avatar.png">https://image.codesensi.cn/mysite/my_avatar.png</a><br>descr：谁说站在光里的才算英雄</p></blockquote>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>龙猫聆听着~</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
+      
+        <content type="html"><![CDATA[    <div id="aplayer-DmEAlmdU" class="aplayer aplayer-tag-marker meting-tag-marker"         data-id="2829816518" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#3F51B5"    ></div>]]></content>
       
     </entry>
     
@@ -588,28 +610,6 @@
       <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="友链申请模板"><a href="#友链申请模板" class="headerlink" title="友链申请模板"></a>友链申请模板</h2><blockquote><p>name：龙猫汪汪汪<br>link：<a href="https://codesensi.cn/">https://codesensi.cn</a><br>avatar：<a href="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/png/Avatar.png">https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/png/Avatar.png</a><br>descr：谁说站在光里的才算英雄</p></blockquote>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>龙猫聆听着~</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
-      
-        <content type="html"><![CDATA[    <div id="aplayer-LzccvcKH" class="aplayer aplayer-tag-marker meting-tag-marker"         data-id="2829816518" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#3F51B5"    ></div>]]></content>
       
     </entry>
     
