@@ -495,11 +495,11 @@
     
     
     <entry>
-      <title>关于</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title></title>
+      <link href="/custom/custom_fonts.css"/>
+      <url>/custom/custom_fonts.css</url>
       
-        <content type="html"><![CDATA[<h2 id="关于龙猫"><a href="#关于龙猫" class="headerlink" title="关于龙猫"></a>关于龙猫</h2><blockquote><p>自我认知：没有最菜只有更菜，我只会比别人更菜。<br>自我成就：Java刚刚入门的一枚菜鸡，我坚信“JavaScript是世界上最好的编程语言”。<br>自我肯定：干啥啥不行，划水第一名。<br>自我总结：怎一个菜字了得。</p></blockquote><img style="display: block; margin: 0 auto;" src="https://image.codesensi.cn/hexo/jpg/my_cai.jpg" alt="我太菜了" /><h2 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h2><blockquote><p>想到什么写什么，记录点点滴滴。</p></blockquote>]]></content>
+        <content type="html"><![CDATA[@font-face {    font-family: 'Harmony';    /* 字体名自定义即可 */    src: url('/custom/HarmonyOS_Sans_SC_Bold.ttf');    /* 字体文件路径 */    font-display: swap;}body {    font-family: 'Harmony', sans-serif;}]]></content>
       
     </entry>
     
@@ -529,10 +529,10 @@
     
     <entry>
       <title></title>
-      <link href="/custom/custom_fonts.css"/>
-      <url>/custom/custom_fonts.css</url>
+      <link href="/custom/grayscale.js"/>
+      <url>/custom/grayscale.js</url>
       
-        <content type="html"><![CDATA[@font-face {    font-family: 'Harmony';    /* 字体名自定义即可 */    src: url('/custom/HarmonyOS_Sans_SC_Bold.ttf');    /* 字体文件路径 */    font-display: swap;}body {    font-family: 'Harmony', sans-serif;}]]></content>
+        <content type="html"><![CDATA[if (PublicSacrificeDay()) {    document.getElementsByTagName("html")[0].setAttribute("style", "filter:gray !important;filter:grayscale(100%);-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);");}function PublicSacrificeDay() {    var PSFarr = new Array("0403", "0404", "0405", "0414", "0512", "0707", "0807", "0814", "0909", "0918", "0930", "1025", "1213");    //2020年4月4日 新冠肺炎哀悼日，清明节    //2010年4月14日，青海玉树地震    //2008年5月12日，四川汶川地震    //1937年7月7日,七七事变 又称卢沟桥事变    //2010年8月7日，甘肃舟曲特大泥石流    //8月14日，世界慰安妇纪念日    //1976年9月9日，毛主席逝世    //1931年9月18日，九一八事变    //烈士纪念日为每年9月30日    //1950年10月25日，抗美援朝纪念日    //1937年12月13日，南京大屠杀    var currentdate = new Date();    var str = "";    var mm = currentdate.getMonth() + 1;    if (currentdate.getMonth() > 9) {        str += mm;    } else {        str += "0" + mm;    }    if (currentdate.getDate() > 9) {        str += currentdate.getDate();    } else {        str += "0" + currentdate.getDate();    }    if (PSFarr.indexOf(str) > -1) {        return 1;    } else {        return 0;    }}]]></content>
       
     </entry>
     
@@ -550,11 +550,11 @@
     
     
     <entry>
-      <title></title>
-      <link href="/custom/grayscale.js"/>
-      <url>/custom/grayscale.js</url>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
-        <content type="html"><![CDATA[if (PublicSacrificeDay()) {    document.getElementsByTagName("html")[0].setAttribute("style", "filter:gray !important;filter:grayscale(100%);-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);");}function PublicSacrificeDay() {    var PSFarr = new Array("0403", "0404", "0405", "0414", "0512", "0707", "0807", "0814", "0909", "0918", "0930", "1025", "1213");    //2020年4月4日 新冠肺炎哀悼日，清明节    //2010年4月14日，青海玉树地震    //2008年5月12日，四川汶川地震    //1937年7月7日,七七事变 又称卢沟桥事变    //2010年8月7日，甘肃舟曲特大泥石流    //8月14日，世界慰安妇纪念日    //1976年9月9日，毛主席逝世    //1931年9月18日，九一八事变    //烈士纪念日为每年9月30日    //1950年10月25日，抗美援朝纪念日    //1937年12月13日，南京大屠杀    var currentdate = new Date();    var str = "";    var mm = currentdate.getMonth() + 1;    if (currentdate.getMonth() > 9) {        str += mm;    } else {        str += "0" + mm;    }    if (currentdate.getDate() > 9) {        str += currentdate.getDate();    } else {        str += "0" + currentdate.getDate();    }    if (PSFarr.indexOf(str) > -1) {        return 1;    } else {        return 0;    }}]]></content>
+        <content type="html"><![CDATA[<h2 id="关于龙猫"><a href="#关于龙猫" class="headerlink" title="关于龙猫"></a>关于龙猫</h2><blockquote><p>自我认知：没有最菜只有更菜，我只会比别人更菜。<br>自我成就：Java刚刚入门的一枚菜鸡，我坚信“JavaScript是世界上最好的编程语言”。<br>自我肯定：干啥啥不行，划水第一名。<br>自我总结：怎一个菜字了得。</p></blockquote><img style="display: block; margin: 0 auto;" src="https://image.codesensi.cn/hexo/jpg/my_cai.jpg" alt="我太菜了" /><h2 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h2><blockquote><p>想到什么写什么，记录点点滴滴。</p></blockquote>]]></content>
       
     </entry>
     
@@ -598,7 +598,7 @@
       <link href="/music/index.html"/>
       <url>/music/index.html</url>
       
-        <content type="html"><![CDATA[    <div id="aplayer-DmEAlmdU" class="aplayer aplayer-tag-marker meting-tag-marker"         data-id="2829816518" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#3F51B5"    ></div>]]></content>
+        <content type="html"><![CDATA[    <div id="aplayer-CqiUwANB" class="aplayer aplayer-tag-marker meting-tag-marker"         data-id="2829816518" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#3F51B5"    ></div>]]></content>
       
     </entry>
     
