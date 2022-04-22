@@ -495,11 +495,22 @@
     
     
     <entry>
-      <title></title>
-      <link href="/custom/bg_gradient.css"/>
-      <url>/custom/bg_gradient.css</url>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
-        <content type="html"><![CDATA[/*全局背景渐变*/#recent-posts>.recent-post-item,.layout_page>div:first-child:not(.recent-posts),.layout_post>#page,.layout_post>#post,.read-mode .layout_post>#post {    background: var(--light_bg_color)}#aside-content .card-widget {    background: var(--light_bg_color)}#web_bg {    background: linear-gradient(90deg, rgba(247, 149, 51, .1), rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1))}#footer {    background: rgba(255, 255, 255, .15);    color: #000;    border-top-right-radius: 20px;    border-top-left-radius: 20px;    backdrop-filter: saturate(100%) blur(5px)}/*页脚渐变*/#footer::before {    background: rgba(255, 255, 255, .15)}#footer #footer-wrap {    color: var(--font-color)}#footer #footer-wrap a {    color: var(--font-color)}]]></content>
+        <content type="html"><![CDATA[<h2 id="关于龙猫"><a href="#关于龙猫" class="headerlink" title="关于龙猫"></a>关于龙猫</h2><blockquote><p>自我认知：没有最菜只有更菜，我只会比别人更菜。<br>自我成就：Java刚刚入门的一枚菜鸡，我坚信“JavaScript是世界上最好的编程语言”。<br>自我肯定：干啥啥不行，划水第一名。<br>自我总结：怎一个菜字了得。</p></blockquote><img style="display: block; margin: 0 auto;" src="https://image.codesensi.cn/hexo/jpg/my_cai.jpg" alt="我太菜了" /><h2 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h2><blockquote><p>想到什么写什么，记录点点滴滴。</p></blockquote>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
@@ -518,10 +529,10 @@
     
     <entry>
       <title></title>
-      <link href="/custom/grayscale.js"/>
-      <url>/custom/grayscale.js</url>
+      <link href="/custom/bg_gradient.css"/>
+      <url>/custom/bg_gradient.css</url>
       
-        <content type="html"><![CDATA[if (PublicSacrificeDay()) {    document.getElementsByTagName("html")[0].setAttribute("style", "filter:gray !important;filter:grayscale(100%);-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);");}function PublicSacrificeDay() {    var PSFarr = new Array("0403", "0404", "0405", "0414", "0512", "0707", "0807", "0814", "0909", "0918", "0930", "1025", "1213");    //2020年4月4日 新冠肺炎哀悼日，清明节    //2010年4月14日，青海玉树地震    //2008年5月12日，四川汶川地震    //1937年7月7日,七七事变 又称卢沟桥事变    //2010年8月7日，甘肃舟曲特大泥石流    //8月14日，世界慰安妇纪念日    //1976年9月9日，毛主席逝世    //1931年9月18日，九一八事变    //烈士纪念日为每年9月30日    //1950年10月25日，抗美援朝纪念日    //1937年12月13日，南京大屠杀    var currentdate = new Date();    var str = "";    var mm = currentdate.getMonth() + 1;    if (currentdate.getMonth() > 9) {        str += mm;    } else {        str += "0" + mm;    }    if (currentdate.getDate() > 9) {        str += currentdate.getDate();    } else {        str += "0" + currentdate.getDate();    }    if (PSFarr.indexOf(str) > -1) {        return 1;    } else {        return 0;    }}]]></content>
+        <content type="html"><![CDATA[/*全局背景渐变*/#recent-posts>.recent-post-item,.layout_page>div:first-child:not(.recent-posts),.layout_post>#page,.layout_post>#post,.read-mode .layout_post>#post {    background: var(--light_bg_color)}#aside-content .card-widget {    background: var(--light_bg_color)}#web_bg {    background: linear-gradient(90deg, rgba(247, 149, 51, .1), rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1))}#footer {    background: rgba(255, 255, 255, .15);    color: #000;    border-top-right-radius: 20px;    border-top-left-radius: 20px;    backdrop-filter: saturate(100%) blur(5px)}/*页脚渐变*/#footer::before {    background: rgba(255, 255, 255, .15)}#footer #footer-wrap {    color: var(--font-color)}#footer #footer-wrap a {    color: var(--font-color)}]]></content>
       
     </entry>
     
@@ -539,6 +550,17 @@
     
     
     <entry>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="友链申请模板"><a href="#友链申请模板" class="headerlink" title="友链申请模板"></a>友链申请模板</h2><blockquote><p>name：龙猫汪汪汪<br>link：<a href="https://codesensi.cn/">https://codesensi.cn</a><br>avatar：<a href="https://image.codesensi.cn/mysite/my_avatar.png">https://image.codesensi.cn/mysite/my_avatar.png</a><br>descr：谁说站在光里的才算英雄</p></blockquote>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="/custom/diytitle.js"/>
       <url>/custom/diytitle.js</url>
@@ -550,11 +572,11 @@
     
     
     <entry>
-      <title>关于</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title></title>
+      <link href="/custom/grayscale.js"/>
+      <url>/custom/grayscale.js</url>
       
-        <content type="html"><![CDATA[<h2 id="关于龙猫"><a href="#关于龙猫" class="headerlink" title="关于龙猫"></a>关于龙猫</h2><blockquote><p>自我认知：没有最菜只有更菜，我只会比别人更菜。<br>自我成就：Java刚刚入门的一枚菜鸡，我坚信“JavaScript是世界上最好的编程语言”。<br>自我肯定：干啥啥不行，划水第一名。<br>自我总结：怎一个菜字了得。</p></blockquote><img style="display: block; margin: 0 auto;" src="https://image.codesensi.cn/hexo/jpg/my_cai.jpg" alt="我太菜了" /><h2 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h2><blockquote><p>想到什么写什么，记录点点滴滴。</p></blockquote>]]></content>
+        <content type="html"><![CDATA[if (PublicSacrificeDay()) {    document.getElementsByTagName("html")[0].setAttribute("style", "filter:gray !important;filter:grayscale(100%);-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);");}function PublicSacrificeDay() {    var PSFarr = new Array("0403", "0404", "0405", "0414", "0512", "0707", "0807", "0814", "0909", "0918", "0930", "1025", "1213");    //2020年4月4日 新冠肺炎哀悼日，清明节    //2010年4月14日，青海玉树地震    //2008年5月12日，四川汶川地震    //1937年7月7日,七七事变 又称卢沟桥事变    //2010年8月7日，甘肃舟曲特大泥石流    //8月14日，世界慰安妇纪念日    //1976年9月9日，毛主席逝世    //1931年9月18日，九一八事变    //烈士纪念日为每年9月30日    //1950年10月25日，抗美援朝纪念日    //1937年12月13日，南京大屠杀    var currentdate = new Date();    var str = "";    var mm = currentdate.getMonth() + 1;    if (currentdate.getMonth() > 9) {        str += mm;    } else {        str += "0" + mm;    }    if (currentdate.getDate() > 9) {        str += currentdate.getDate();    } else {        str += "0" + currentdate.getDate();    }    if (PSFarr.indexOf(str) > -1) {        return 1;    } else {        return 0;    }}]]></content>
       
     </entry>
     
@@ -572,22 +594,11 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="友链申请模板"><a href="#友链申请模板" class="headerlink" title="友链申请模板"></a>友链申请模板</h2><blockquote><p>name：龙猫汪汪汪<br>link：<a href="https://codesensi.cn/">https://codesensi.cn</a><br>avatar：<a href="https://image.codesensi.cn/mysite/my_avatar.png">https://image.codesensi.cn/mysite/my_avatar.png</a><br>descr：谁说站在光里的才算英雄</p></blockquote>]]></content>
       
     </entry>
     
@@ -598,18 +609,7 @@
       <link href="/music/index.html"/>
       <url>/music/index.html</url>
       
-        <content type="html"><![CDATA[    <div id="aplayer-iLcbdUKT" class="aplayer aplayer-tag-marker meting-tag-marker"         data-id="2829816518" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#3F51B5"    ></div>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[    <div id="aplayer-nbFiuoYU" class="aplayer aplayer-tag-marker meting-tag-marker"         data-id="2829816518" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#3F51B5"    ></div>]]></content>
       
     </entry>
     
