@@ -394,9 +394,9 @@
       
         <tags>
             
-            <tag> docker </tag>
-            
             <tag> centos </tag>
+            
+            <tag> docker </tag>
             
             <tag> yum </tag>
             
@@ -495,17 +495,6 @@
     
     
     <entry>
-      <title>龙猫认真记录~</title>
-      <link href="/gallery/index.html"/>
-      <url>/gallery/index.html</url>
-      
-        <content type="html"><![CDATA[<div class="gallery-group-main">  <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/computer/20200801001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">电脑壁纸</div>  <p>超高分辨率的电脑壁纸</p>  <a href='/gallery/computer'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/mobile/20211018001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">手机壁纸</div>  <p>适配全面屏的手机壁纸</p>  <a href='/gallery/mobile'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/default/001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">默认相册</div>  <p>不知道怎么分类的图片</p>  <a href='/gallery/default'></a>  </figcaption>  </figure>  </div>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>关于</title>
       <link href="/about/index.html"/>
       <url>/about/index.html</url>
@@ -517,33 +506,11 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title></title>
       <link href="/custom/bg_gradient.css"/>
       <url>/custom/bg_gradient.css</url>
       
         <content type="html"><![CDATA[/*全局背景渐变*/#recent-posts>.recent-post-item,.layout_page>div:first-child:not(.recent-posts),.layout_post>#page,.layout_post>#post,.read-mode .layout_post>#post {    background: var(--light_bg_color)}#aside-content .card-widget {    background: var(--light_bg_color)}#web_bg {    background: linear-gradient(90deg, rgba(247, 149, 51, .1), rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1))}#footer {    background: rgba(255, 255, 255, .15);    color: #000;    border-top-right-radius: 20px;    border-top-left-radius: 20px;    backdrop-filter: saturate(100%) blur(5px)}/*页脚渐变*/#footer::before {    background: rgba(255, 255, 255, .15)}#footer #footer-wrap {    color: var(--font-color)}#footer #footer-wrap a {    color: var(--font-color)}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/custom/diytitle.js"/>
-      <url>/custom/diytitle.js</url>
-      
-        <content type="html"><![CDATA[//动态标题var OriginTitile = document.title;var titleTime;document.addEventListener('visibilitychange', function() {    if (document.hidden) {        //离开当前页面时标签显示内容        document.title = 'w(ﾟДﾟ)w 嗨呀！404啦！';        clearTimeout(titleTime);    } else {        //返回当前页面时标签显示内容        document.title = '♪(^∇^*)嘿嘿！骗你哒~' + OriginTitile;        //两秒后变回正常标题        titleTime = setTimeout(function() {            document.title = OriginTitile;        }, 2000);    }});]]></content>
       
     </entry>
     
@@ -573,6 +540,17 @@
     
     <entry>
       <title></title>
+      <link href="/custom/diytitle.js"/>
+      <url>/custom/diytitle.js</url>
+      
+        <content type="html"><![CDATA[//动态标题var OriginTitile = document.title;var titleTime;document.addEventListener('visibilitychange', function() {    if (document.hidden) {        //离开当前页面时标签显示内容        document.title = 'w(ﾟДﾟ)w 嗨呀！404啦！';        clearTimeout(titleTime);    } else {        //返回当前页面时标签显示内容        document.title = '♪(^∇^*)嘿嘿！骗你哒~' + OriginTitile;        //两秒后变回正常标题        titleTime = setTimeout(function() {            document.title = OriginTitile;        }, 2000);    }});]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
       <link href="/custom/twikoo_beautify.css"/>
       <url>/custom/twikoo_beautify.css</url>
       
@@ -583,11 +561,22 @@
     
     
     <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title>龙猫认真记录~</title>
+      <link href="/gallery/index.html"/>
+      <url>/gallery/index.html</url>
       
-        <content type="html"><![CDATA[<h2 id="友链申请模板"><a href="#友链申请模板" class="headerlink" title="友链申请模板"></a>友链申请模板</h2><blockquote><p>name：龙猫汪汪汪<br>link：<a href="https://codesensi.cn/">https://codesensi.cn</a><br>avatar：<a href="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/png/Avatar.png">https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/png/Avatar.png</a><br>descr：谁说站在光里的才算英雄</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<div class="gallery-group-main">  <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/computer/20200801001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">电脑壁纸</div>  <p>超高分辨率的电脑壁纸</p>  <a href='/gallery/computer'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/mobile/20211018001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">手机壁纸</div>  <p>适配全面屏的手机壁纸</p>  <a href='/gallery/mobile'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/default/001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">默认相册</div>  <p>不知道怎么分类的图片</p>  <a href='/gallery/default'></a>  </figcaption>  </figure>  </div>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
@@ -605,11 +594,22 @@
     
     
     <entry>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="友链申请模板"><a href="#友链申请模板" class="headerlink" title="友链申请模板"></a>友链申请模板</h2><blockquote><p>name：龙猫汪汪汪<br>link：<a href="https://codesensi.cn/">https://codesensi.cn</a><br>avatar：<a href="https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/png/Avatar.png">https://cdn.jsdelivr.net/gh/codesensi/picture@main/stage/png/Avatar.png</a><br>descr：谁说站在光里的才算英雄</p></blockquote>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>龙猫聆听着~</title>
       <link href="/music/index.html"/>
       <url>/music/index.html</url>
       
-        <content type="html"><![CDATA[    <div id="aplayer-RomSwXhB" class="aplayer aplayer-tag-marker meting-tag-marker"         data-id="2829816518" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#3F51B5"    ></div>]]></content>
+        <content type="html"><![CDATA[    <div id="aplayer-LzccvcKH" class="aplayer aplayer-tag-marker meting-tag-marker"         data-id="2829816518" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#3F51B5"    ></div>]]></content>
       
     </entry>
     
@@ -627,22 +627,22 @@
     
     
     <entry>
-      <title>手机壁纸</title>
-      <link href="/gallery/mobile/index.html"/>
-      <url>/gallery/mobile/index.html</url>
+      <title>默认相册</title>
+      <link href="/gallery/default/index.html"/>
+      <url>/gallery/default/index.html</url>
       
-        <content type="html"><![CDATA[<div class="fj-gallery"><p><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018001.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018002.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018003.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018004.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018005.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018006.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018007.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018008.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018009.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018010.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018011.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018012.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018013.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018014.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018015.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018016.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018017.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018018.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018019.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018020.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018021.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018022.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018023.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018024.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018025.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018026.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018027.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018028.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018029.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018030.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018031.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018032.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018033.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018034.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018035.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018036.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018037.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018038.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018039.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018040.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018041.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018042.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018043.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018044.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018045.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018046.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018047.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018048.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018049.jpg"></p>          </div>]]></content>
+        <content type="html"><![CDATA[<div class="fj-gallery"><p><img src="https://image.codesensi.cn/hexo/gallary/default/001.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/002.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/003.png"><br><img src="https://image.codesensi.cn/hexo/gallary/default/004.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/005.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/006.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/007.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/008.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/009.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/010.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/011.png"><br><img src="https://image.codesensi.cn/hexo/gallary/default/012.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/013.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/014.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/015.jpg"></p>          </div>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>默认相册</title>
-      <link href="/gallery/default/index.html"/>
-      <url>/gallery/default/index.html</url>
+      <title>手机壁纸</title>
+      <link href="/gallery/mobile/index.html"/>
+      <url>/gallery/mobile/index.html</url>
       
-        <content type="html"><![CDATA[<div class="fj-gallery"><p><img src="https://image.codesensi.cn/hexo/gallary/default/001.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/002.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/003.png"><br><img src="https://image.codesensi.cn/hexo/gallary/default/004.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/005.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/006.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/007.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/008.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/009.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/010.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/011.png"><br><img src="https://image.codesensi.cn/hexo/gallary/default/012.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/013.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/014.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/default/015.jpg"></p>          </div>]]></content>
+        <content type="html"><![CDATA[<div class="fj-gallery"><p><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018001.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018002.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018003.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018004.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018005.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018006.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018007.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018008.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018009.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018010.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018011.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018012.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018013.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018014.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018015.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018016.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018017.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018018.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018019.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018020.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018021.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018022.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018023.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018024.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018025.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018026.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018027.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018028.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018029.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018030.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018031.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018032.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018033.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018034.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018035.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018036.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018037.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018038.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018039.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018040.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018041.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018042.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018043.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018044.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018045.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018046.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018047.png"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018048.jpg"><br><img src="https://image.codesensi.cn/hexo/gallary/mobile/20211018049.jpg"></p>          </div>]]></content>
       
     </entry>
     
