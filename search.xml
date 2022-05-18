@@ -367,9 +367,9 @@
             
             <tag> docker </tag>
             
-            <tag> linux </tag>
-            
             <tag> nginx </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -506,11 +506,11 @@
     
     
     <entry>
-      <title>龙猫认真记录~</title>
-      <link href="/gallery/index.html"/>
-      <url>/gallery/index.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
-        <content type="html"><![CDATA[<div class="gallery-group-main">  <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/computer/20200801001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">电脑壁纸</div>  <p>超高分辨率的电脑壁纸</p>  <a href='/gallery/computer'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/mobile/20211018001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">手机壁纸</div>  <p>适配全面屏的手机壁纸</p>  <a href='/gallery/mobile'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/default/001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">默认相册</div>  <p>不知道怎么分类的图片</p>  <a href='/gallery/default'></a>  </figcaption>  </figure>  </div>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
@@ -529,10 +529,10 @@
     
     <entry>
       <title></title>
-      <link href="/custom/diytitle.js"/>
-      <url>/custom/diytitle.js</url>
+      <link href="/custom/custom_fonts.css"/>
+      <url>/custom/custom_fonts.css</url>
       
-        <content type="html"><![CDATA[//动态标题var OriginTitile = document.title;var titleTime;document.addEventListener('visibilitychange', function() {    if (document.hidden) {        //离开当前页面时标签显示内容        document.title = 'w(ﾟДﾟ)w 嗨呀！404啦！';        clearTimeout(titleTime);    } else {        //返回当前页面时标签显示内容        document.title = '♪(^∇^*)嘿嘿！骗你哒~' + OriginTitile;        //两秒后变回正常标题        titleTime = setTimeout(function() {            document.title = OriginTitile;        }, 2000);    }});]]></content>
+        <content type="html"><![CDATA[@font-face {    font-family: 'Harmony';    /* 字体名自定义即可 */    src: url('/custom/HarmonyOS_Sans_SC_Bold.ttf');    /* 字体文件路径 */    font-display: swap;}body {    font-family: 'Harmony', sans-serif;}]]></content>
       
     </entry>
     
@@ -540,10 +540,10 @@
     
     <entry>
       <title></title>
-      <link href="/custom/custom_fonts.css"/>
-      <url>/custom/custom_fonts.css</url>
+      <link href="/custom/diytitle.js"/>
+      <url>/custom/diytitle.js</url>
       
-        <content type="html"><![CDATA[@font-face {    font-family: 'Harmony';    /* 字体名自定义即可 */    src: url('/custom/HarmonyOS_Sans_SC_Bold.ttf');    /* 字体文件路径 */    font-display: swap;}body {    font-family: 'Harmony', sans-serif;}]]></content>
+        <content type="html"><![CDATA[//动态标题var OriginTitile = document.title;var titleTime;document.addEventListener('visibilitychange', function() {    if (document.hidden) {        //离开当前页面时标签显示内容        document.title = 'w(ﾟДﾟ)w 嗨呀！404啦！';        clearTimeout(titleTime);    } else {        //返回当前页面时标签显示内容        document.title = '♪(^∇^*)嘿嘿！骗你哒~' + OriginTitile;        //两秒后变回正常标题        titleTime = setTimeout(function() {            document.title = OriginTitile;        }, 2000);    }});]]></content>
       
     </entry>
     
@@ -572,11 +572,11 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>龙猫认真记录~</title>
+      <link href="/gallery/index.html"/>
+      <url>/gallery/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<div class="gallery-group-main">  <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/computer/20200801001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">电脑壁纸</div>  <p>超高分辨率的电脑壁纸</p>  <a href='/gallery/computer'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/mobile/20211018001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">手机壁纸</div>  <p>适配全面屏的手机壁纸</p>  <a href='/gallery/mobile'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/default/001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">默认相册</div>  <p>不知道怎么分类的图片</p>  <a href='/gallery/default'></a>  </figcaption>  </figure>  </div>]]></content>
       
     </entry>
     
@@ -594,22 +594,22 @@
     
     
     <entry>
-      <title>龙猫聆听着~</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
-        <content type="html"><![CDATA[    <div id="aplayer-ThXxdOMz" class="aplayer aplayer-tag-marker meting-tag-marker"         data-id="2829816518" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#3F51B5"    ></div>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>龙猫聆听着~</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[    <div id="aplayer-HeDXTefl" class="aplayer aplayer-tag-marker meting-tag-marker"         data-id="2829816518" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#3F51B5"    ></div>]]></content>
       
     </entry>
     
