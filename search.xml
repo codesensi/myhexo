@@ -367,9 +367,9 @@
             
             <tag> docker </tag>
             
-            <tag> nginx </tag>
-            
             <tag> linux </tag>
+            
+            <tag> nginx </tag>
             
         </tags>
       
@@ -394,9 +394,9 @@
       
         <tags>
             
-            <tag> docker </tag>
-            
             <tag> centos </tag>
+            
+            <tag> docker </tag>
             
             <tag> yum </tag>
             
@@ -495,11 +495,44 @@
     
     
     <entry>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="关于龙猫"><a href="#关于龙猫" class="headerlink" title="关于龙猫"></a>关于龙猫</h2><blockquote><p>自我认知：没有最菜只有更菜，我只会比别人更菜。<br>自我成就：Java刚刚入门的一枚菜鸡，我坚信“JavaScript是世界上最好的编程语言”。<br>自我肯定：干啥啥不行，划水第一名。<br>自我总结：怎一个菜字了得。</p></blockquote><img style="display: block; margin: 0 auto;" src="https://image.codesensi.cn/hexo/jpg/my_cai.jpg" alt="我太菜了" /><h2 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h2><blockquote><p>想到什么写什么，记录点点滴滴。</p></blockquote>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>龙猫认真记录~</title>
+      <link href="/gallery/index.html"/>
+      <url>/gallery/index.html</url>
+      
+        <content type="html"><![CDATA[<div class="gallery-group-main">  <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/computer/20200801001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">电脑壁纸</div>  <p>超高分辨率的电脑壁纸</p>  <a href='/gallery/computer'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/mobile/20211018001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">手机壁纸</div>  <p>适配全面屏的手机壁纸</p>  <a href='/gallery/mobile'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/default/001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">默认相册</div>  <p>不知道怎么分类的图片</p>  <a href='/gallery/default'></a>  </figcaption>  </figure>  </div>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="/custom/bg_gradient.css"/>
       <url>/custom/bg_gradient.css</url>
       
         <content type="html"><![CDATA[/*全局背景渐变*/#recent-posts>.recent-post-item,.layout_page>div:first-child:not(.recent-posts),.layout_post>#page,.layout_post>#post,.read-mode .layout_post>#post {    background: var(--light_bg_color)}#aside-content .card-widget {    background: var(--light_bg_color)}#web_bg {    background: linear-gradient(90deg, rgba(247, 149, 51, .1), rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1))}#footer {    background: rgba(255, 255, 255, .15);    color: #000;    border-top-right-radius: 20px;    border-top-left-radius: 20px;    backdrop-filter: saturate(100%) blur(5px)}/*页脚渐变*/#footer::before {    background: rgba(255, 255, 255, .15)}#footer #footer-wrap {    color: var(--font-color)}#footer #footer-wrap a {    color: var(--font-color)}]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/custom/diytitle.js"/>
+      <url>/custom/diytitle.js</url>
+      
+        <content type="html"><![CDATA[//动态标题var OriginTitile = document.title;var titleTime;document.addEventListener('visibilitychange', function() {    if (document.hidden) {        //离开当前页面时标签显示内容        document.title = 'w(ﾟДﾟ)w 嗨呀！404啦！';        clearTimeout(titleTime);    } else {        //返回当前页面时标签显示内容        document.title = '♪(^∇^*)嘿嘿！骗你哒~' + OriginTitile;        //两秒后变回正常标题        titleTime = setTimeout(function() {            document.title = OriginTitile;        }, 2000);    }});]]></content>
       
     </entry>
     
@@ -518,17 +551,6 @@
     
     <entry>
       <title></title>
-      <link href="/custom/twikoo_beautify.css"/>
-      <url>/custom/twikoo_beautify.css</url>
-      
-        <content type="html"><![CDATA[/* 自定义twikoo评论输入框高度 */.tk-input[data-v-619b4c52] .el-textarea__inner {    height: 130px !important;}/* 输入评论时自动隐藏输入框背景图片 */.tk-input[data-v-619b4c52] .el-textarea__inner:focus {    background-image: none !important;}/* 调整楼中楼样式 ，整体左移，贴合气泡化效果 */.tk-replies {    left: -70px;    width: calc(100% + 70px);}/* 头像宽度调整 rem单位与全局字体大小挂钩，需配合自己情况调整大小以保证头像显示完整*/.tk-replies .tk-avatar {    width: 2.5rem !important;    height: 2.5rem !important;}.tk-replies .tk-avatar img {    width: 2.5rem !important;    height: 2.5rem !important;}/* 回复框左移，避免窄屏时出框 */.tk-comments-container .tk-submit {    position: relative;    left: -70px;}/* 评论块气泡化修改 */.tk-content {    background: #00a6ff;    /*默认模式访客气泡配色*/    padding: 10px;    color: #fff;    /*默认模式访客气泡字体配色*/    border-radius: 10px;    font-size: 16px !important;    width: fit-content;    max-width: 100%;    position: relative !important;    overflow: visible !important;    max-height: none !important;}/* 修复图片出框 */.tk-content img {    max-width: 100% !important;}/* 修复过长文本出框 */.tk-content pre {    white-space: pre-wrap;    word-wrap: break-word;}.tk-content a {    color: #eeecaa;    /*默认模式超链接配色*/}.tk-content::before {    content: '';    width: 0;    height: 0;    position: absolute;    top: 20px;    left: -13px;    border-top: 2px solid transparent;    border-bottom: 20px solid transparent;    border-right: 15px solid #00a6ff;    /*默认模式访客气泡小三角配色*/    border-left: 0px solid transparent;}.tk-master .tk-content {    background: #ff8080;    /*默认模式博主气泡配色*/    color: #fff;    /*默认模式博主气泡字体配色*/    width: fit-content;    max-width: 100%;}.tk-master .tk-content a {    color: #eeecaa;}.tk-master .tk-content::before {    content: '';    width: 0;    height: 0;    position: absolute;    top: 20px;    left: -13px;    border-top: 2px solid transparent;    border-bottom: 20px solid transparent;    border-right: 15px solid #ff8080;    /*默认模式博主气泡小三角配色*/    border-left: 0px solid transparent;}.tk-row[data-v-d82ce9a0] {    max-width: 100%;    width: fit-content;}.tk-avatar {    border-radius: 50%;    margin-top: 10px;}/* 夜间模式配色，具体比照上方默认模式class */[data-theme="dark"] .tk-content {    background: #000;    color: #fff;}[data-theme="dark"] .tk-content a {    color: #dfa036;}[data-theme="dark"] .tk-content::before {    border-right: 15px solid #000;}[data-theme="dark"] .tk-master .tk-content {    background: #000;    color: #fff;}[data-theme="dark"] .tk-master .tk-content a {    color: #dfa036;}[data-theme="dark"] .tk-master .tk-content::before {    border-top: 2px solid transparent;    border-bottom: 20px solid transparent;    border-right: 15px solid #000;    border-left: 0px solid transparent;}/* 自适应内容 */@media screen and (min-width: 1024px) {    /* 设置宽度上限，避免挤压博主头像 */    .tk-content {        max-width: 75%;        width: fit-content;    }    .tk-master .tk-content {        width: 75%;    }    .tk-master .tk-content::before {        left: 100%;        border-left: 15px solid #ff8080;        border-right: 0px solid transparent;    }    .tk-master .tk-avatar {        position: relative;        left: calc(75% + 70px);    }    .tk-master .tk-row[data-v-d82ce9a0] {        position: relative;        top: 0px;        left: calc(75% - 230px);    }    [data-theme="dark"] .tk-master .tk-content::before {        border-left: 15px solid #000;        border-right: 0px solid transparent;    }}/* 设备名称常态隐藏，悬停评论时显示 */.tk-extras {    opacity: 0;    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";    filter: alpha(opacity=0);}.tk-content:hover+.tk-extras {    -webkit-animation: tk-extras-fadeIn 0.5s linear;    -moz-animation: tk-extras-fadeIn 0.5s linear;    -o-animation: tk-extras-fadeIn 0.5s linear;    -ms-animation: tk-extras-fadeIn 0.5s linear;    animation: tk-extras-fadeIn 0.5s linear;    -webkit-animation-fill-mode: forwards;    -moz-animation-fill-mode: forwards;    -o-animation-fill-mode: forwards;    -ms-animation-fill-mode: forwards;    animation-fill-mode: forwards;}@-moz-keyframes tk-extras-fadeIn {    from {        opacity: 0;        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";        filter: alpha(opacity=0);    }    to {        opacity: 1;        -ms-filter: none;        filter: none;    }}@-webkit-keyframes tk-extras-fadeIn {    from {        opacity: 0;        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";        filter: alpha(opacity=0);    }    to {        opacity: 1;        -ms-filter: none;        filter: none;    }}@-o-keyframes tk-extras-fadeIn {    from {        opacity: 0;        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";        filter: alpha(opacity=0);    }    to {        opacity: 1;        -ms-filter: none;        filter: none;    }}@keyframes tk-extras-fadeIn {    from {        opacity: 0;        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";        filter: alpha(opacity=0);    }    to {        opacity: 1;        -ms-filter: none;        filter: none;    }}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
       <link href="/custom/grayscale.js"/>
       <url>/custom/grayscale.js</url>
       
@@ -539,11 +561,11 @@
     
     
     <entry>
-      <title>关于</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title></title>
+      <link href="/custom/twikoo_beautify.css"/>
+      <url>/custom/twikoo_beautify.css</url>
       
-        <content type="html"><![CDATA[<h2 id="关于龙猫"><a href="#关于龙猫" class="headerlink" title="关于龙猫"></a>关于龙猫</h2><blockquote><p>自我认知：没有最菜只有更菜，我只会比别人更菜。<br>自我成就：Java刚刚入门的一枚菜鸡，我坚信“JavaScript是世界上最好的编程语言”。<br>自我肯定：干啥啥不行，划水第一名。<br>自我总结：怎一个菜字了得。</p></blockquote><img style="display: block; margin: 0 auto;" src="https://image.codesensi.cn/hexo/jpg/my_cai.jpg" alt="我太菜了" /><h2 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h2><blockquote><p>想到什么写什么，记录点点滴滴。</p></blockquote>]]></content>
+        <content type="html"><![CDATA[/* 自定义twikoo评论输入框高度 */.tk-input[data-v-619b4c52] .el-textarea__inner {    height: 130px !important;}/* 输入评论时自动隐藏输入框背景图片 */.tk-input[data-v-619b4c52] .el-textarea__inner:focus {    background-image: none !important;}/* 调整楼中楼样式 ，整体左移，贴合气泡化效果 */.tk-replies {    left: -70px;    width: calc(100% + 70px);}/* 头像宽度调整 rem单位与全局字体大小挂钩，需配合自己情况调整大小以保证头像显示完整*/.tk-replies .tk-avatar {    width: 2.5rem !important;    height: 2.5rem !important;}.tk-replies .tk-avatar img {    width: 2.5rem !important;    height: 2.5rem !important;}/* 回复框左移，避免窄屏时出框 */.tk-comments-container .tk-submit {    position: relative;    left: -70px;}/* 评论块气泡化修改 */.tk-content {    background: #00a6ff;    /*默认模式访客气泡配色*/    padding: 10px;    color: #fff;    /*默认模式访客气泡字体配色*/    border-radius: 10px;    font-size: 16px !important;    width: fit-content;    max-width: 100%;    position: relative !important;    overflow: visible !important;    max-height: none !important;}/* 修复图片出框 */.tk-content img {    max-width: 100% !important;}/* 修复过长文本出框 */.tk-content pre {    white-space: pre-wrap;    word-wrap: break-word;}.tk-content a {    color: #eeecaa;    /*默认模式超链接配色*/}.tk-content::before {    content: '';    width: 0;    height: 0;    position: absolute;    top: 20px;    left: -13px;    border-top: 2px solid transparent;    border-bottom: 20px solid transparent;    border-right: 15px solid #00a6ff;    /*默认模式访客气泡小三角配色*/    border-left: 0px solid transparent;}.tk-master .tk-content {    background: #ff8080;    /*默认模式博主气泡配色*/    color: #fff;    /*默认模式博主气泡字体配色*/    width: fit-content;    max-width: 100%;}.tk-master .tk-content a {    color: #eeecaa;}.tk-master .tk-content::before {    content: '';    width: 0;    height: 0;    position: absolute;    top: 20px;    left: -13px;    border-top: 2px solid transparent;    border-bottom: 20px solid transparent;    border-right: 15px solid #ff8080;    /*默认模式博主气泡小三角配色*/    border-left: 0px solid transparent;}.tk-row[data-v-d82ce9a0] {    max-width: 100%;    width: fit-content;}.tk-avatar {    border-radius: 50%;    margin-top: 10px;}/* 夜间模式配色，具体比照上方默认模式class */[data-theme="dark"] .tk-content {    background: #000;    color: #fff;}[data-theme="dark"] .tk-content a {    color: #dfa036;}[data-theme="dark"] .tk-content::before {    border-right: 15px solid #000;}[data-theme="dark"] .tk-master .tk-content {    background: #000;    color: #fff;}[data-theme="dark"] .tk-master .tk-content a {    color: #dfa036;}[data-theme="dark"] .tk-master .tk-content::before {    border-top: 2px solid transparent;    border-bottom: 20px solid transparent;    border-right: 15px solid #000;    border-left: 0px solid transparent;}/* 自适应内容 */@media screen and (min-width: 1024px) {    /* 设置宽度上限，避免挤压博主头像 */    .tk-content {        max-width: 75%;        width: fit-content;    }    .tk-master .tk-content {        width: 75%;    }    .tk-master .tk-content::before {        left: 100%;        border-left: 15px solid #ff8080;        border-right: 0px solid transparent;    }    .tk-master .tk-avatar {        position: relative;        left: calc(75% + 70px);    }    .tk-master .tk-row[data-v-d82ce9a0] {        position: relative;        top: 0px;        left: calc(75% - 230px);    }    [data-theme="dark"] .tk-master .tk-content::before {        border-left: 15px solid #000;        border-right: 0px solid transparent;    }}/* 设备名称常态隐藏，悬停评论时显示 */.tk-extras {    opacity: 0;    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";    filter: alpha(opacity=0);}.tk-content:hover+.tk-extras {    -webkit-animation: tk-extras-fadeIn 0.5s linear;    -moz-animation: tk-extras-fadeIn 0.5s linear;    -o-animation: tk-extras-fadeIn 0.5s linear;    -ms-animation: tk-extras-fadeIn 0.5s linear;    animation: tk-extras-fadeIn 0.5s linear;    -webkit-animation-fill-mode: forwards;    -moz-animation-fill-mode: forwards;    -o-animation-fill-mode: forwards;    -ms-animation-fill-mode: forwards;    animation-fill-mode: forwards;}@-moz-keyframes tk-extras-fadeIn {    from {        opacity: 0;        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";        filter: alpha(opacity=0);    }    to {        opacity: 1;        -ms-filter: none;        filter: none;    }}@-webkit-keyframes tk-extras-fadeIn {    from {        opacity: 0;        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";        filter: alpha(opacity=0);    }    to {        opacity: 1;        -ms-filter: none;        filter: none;    }}@-o-keyframes tk-extras-fadeIn {    from {        opacity: 0;        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";        filter: alpha(opacity=0);    }    to {        opacity: 1;        -ms-filter: none;        filter: none;    }}@keyframes tk-extras-fadeIn {    from {        opacity: 0;        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";        filter: alpha(opacity=0);    }    to {        opacity: 1;        -ms-filter: none;        filter: none;    }}]]></content>
       
     </entry>
     
@@ -553,39 +575,6 @@
       <title>分类</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/custom/diytitle.js"/>
-      <url>/custom/diytitle.js</url>
-      
-        <content type="html"><![CDATA[//动态标题var OriginTitile = document.title;var titleTime;document.addEventListener('visibilitychange', function() {    if (document.hidden) {        //离开当前页面时标签显示内容        document.title = 'w(ﾟДﾟ)w 嗨呀！404啦！';        clearTimeout(titleTime);    } else {        //返回当前页面时标签显示内容        document.title = '♪(^∇^*)嘿嘿！骗你哒~' + OriginTitile;        //两秒后变回正常标题        titleTime = setTimeout(function() {            document.title = OriginTitile;        }, 2000);    }});]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>龙猫认真记录~</title>
-      <link href="/gallery/index.html"/>
-      <url>/gallery/index.html</url>
-      
-        <content type="html"><![CDATA[<div class="gallery-group-main">  <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/computer/20200801001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">电脑壁纸</div>  <p>超高分辨率的电脑壁纸</p>  <a href='/gallery/computer'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/mobile/20211018001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">手机壁纸</div>  <p>适配全面屏的手机壁纸</p>  <a href='/gallery/mobile'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://image.codesensi.cn/hexo/gallary/default/001.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">默认相册</div>  <p>不知道怎么分类的图片</p>  <a href='/gallery/default'></a>  </figcaption>  </figure>  </div>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -609,7 +598,18 @@
       <link href="/music/index.html"/>
       <url>/music/index.html</url>
       
-        <content type="html"><![CDATA[    <div id="aplayer-cVaQtJvU" class="aplayer aplayer-tag-marker meting-tag-marker"         data-id="2829816518" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#3F51B5"    ></div>]]></content>
+        <content type="html"><![CDATA[    <div id="aplayer-ThXxdOMz" class="aplayer aplayer-tag-marker meting-tag-marker"         data-id="2829816518" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#3F51B5"    ></div>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
