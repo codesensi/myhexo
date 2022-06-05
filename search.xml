@@ -495,33 +495,22 @@
     
     
     <entry>
-      <title>关于</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="关于龙猫"><a href="#关于龙猫" class="headerlink" title="关于龙猫"></a>关于龙猫</h2><blockquote><p>自我认知：没有最菜只有更菜，我只会比别人更菜。<br>自我成就：Java刚刚入门的一枚菜鸡，我坚信“JavaScript是世界上最好的编程语言”。<br>自我肯定：干啥啥不行，划水第一名。<br>自我总结：怎一个菜字了得。</p></blockquote><img style="display: block; margin: 0 auto;" src="https://image.codesensi.cn/hexo/jpg/my_cai.jpg" alt="我太菜了" /><h2 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h2><blockquote><p>想到什么写什么，记录点点滴滴。</p></blockquote>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title></title>
       <link href="/custom/bg_gradient.css"/>
       <url>/custom/bg_gradient.css</url>
       
         <content type="html"><![CDATA[/*全局背景渐变*/#recent-posts>.recent-post-item,.layout_page>div:first-child:not(.recent-posts),.layout_post>#page,.layout_post>#post,.read-mode .layout_post>#post {    background: var(--light_bg_color)}#aside-content .card-widget {    background: var(--light_bg_color)}#web_bg {    background: linear-gradient(90deg, rgba(247, 149, 51, .1), rgba(243, 112, 85, .1) 15%, rgba(239, 78, 123, .1) 30%, rgba(161, 102, 171, .1) 44%, rgba(80, 115, 184, .1) 58%, rgba(16, 152, 173, .1) 72%, rgba(7, 179, 155, .1) 86%, rgba(109, 186, 130, .1))}#footer {    background: rgba(255, 255, 255, .15);    color: #000;    border-top-right-radius: 20px;    border-top-left-radius: 20px;    backdrop-filter: saturate(100%) blur(5px)}/*页脚渐变*/#footer::before {    background: rgba(255, 255, 255, .15)}#footer #footer-wrap {    color: var(--font-color)}#footer #footer-wrap a {    color: var(--font-color)}]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="关于龙猫"><a href="#关于龙猫" class="headerlink" title="关于龙猫"></a>关于龙猫</h2><blockquote><p>自我认知：没有最菜只有更菜，我只会比别人更菜。<br>自我成就：Java刚刚入门的一枚菜鸡，我坚信“JavaScript是世界上最好的编程语言”。<br>自我肯定：干啥啥不行，划水第一名。<br>自我总结：怎一个菜字了得。</p></blockquote><img style="display: block; margin: 0 auto;" src="https://image.codesensi.cn/hexo/jpg/my_cai.jpg" alt="我太菜了" /><h2 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h2><blockquote><p>想到什么写什么，记录点点滴滴。</p></blockquote>]]></content>
       
     </entry>
     
@@ -583,6 +572,28 @@
     
     
     <entry>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>龙猫聆听着~</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
+      
+        <content type="html"><![CDATA[    <div id="aplayer-KQmhoUpQ" class="aplayer aplayer-tag-marker meting-tag-marker"         data-id="2829816518" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#3F51B5"    ></div>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>友链</title>
       <link href="/link/index.html"/>
       <url>/link/index.html</url>
@@ -599,17 +610,6 @@
       <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>龙猫聆听着~</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
-      
-        <content type="html"><![CDATA[    <div id="aplayer-HeDXTefl" class="aplayer aplayer-tag-marker meting-tag-marker"         data-id="2829816518" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#3F51B5"    ></div>]]></content>
       
     </entry>
     
